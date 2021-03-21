@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InAppMusicScreen">
+
+    <LinearLayout
+        android:id="@+id/in_app_music_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+            android:id="@+id/back_to_home_bt_in_app_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/music_bar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="570dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/album_cover_in_app_music"
+                    android:layout_width="330dp"
+                    android:layout_height="330dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/headphones" />
+
+                <TextView
+                    android:id="@+id/songTitle_in_app_music"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Song Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <SeekBar
+                    android:id="@+id/seekBarTime_in_app_music"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/prev_bt_in_app_music"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_media_previous" />
+
+                    <ImageView
+                        android:id="@+id/play_bt_in_app_music"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_media_play" />
+
+                    <ImageView
+                        android:id="@+id/next_bt_in_app_music"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_media_next" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/soundmin" />
+
+                    <SeekBar
+                        android:id="@+id/seekBarVol_in_app_music"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/soundmax" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/options_bar_in_app_music"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/settings_bt_in_app_music"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/settings_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/discover_new_trails_bt_in_app_music"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/discover_new_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/active_trail_bt_in_app_music"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/active_trail_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/my_trails_bt_in_app_music"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/my_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/music_bt_in_app_music"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/music_bt_bar"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

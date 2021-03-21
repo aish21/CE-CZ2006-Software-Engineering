@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DiscoverNewTrailsScreen">
+
+    <LinearLayout
+        android:id="@+id/discover_new_trail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+            android:id="@+id/back_to_home_bt_discover_new_trail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/discover_new_trails_bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="590dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/trail_by_distance_bt_discover_new_trail"
+                android:layout_width="370dp"
+                android:layout_height="150dp"
+                android:background="@drawable/trail_by_distance_bt" />
+
+            <Button
+                android:id="@+id/trail_by_type_bt_discover_new_trail"
+                android:layout_width="370dp"
+                android:layout_height="150dp"
+                android:background="@drawable/trail_by_type_bt" />
+
+            <Button
+                android:id="@+id/customize_trail_bt_discover_new_trail"
+                android:layout_width="370dp"
+                android:layout_height="150dp"
+                android:background="@drawable/customize_trail_bt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/options_bar_discover_new_trail"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/settings_bt_discover_new_trail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/settings_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/discover_new_trails_bt_discover_new_trail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/discover_new_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/active_trail_bt_discover_new_trail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/active_trail_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/my_trails_bt_discover_new_trail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/my_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/music_bt_discover_new_trail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/music_bt_bar"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

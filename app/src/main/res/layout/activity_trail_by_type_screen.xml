@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrailByTypeScreen">
+
+    <LinearLayout
+        android:id="@+id/trails_by_type_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/back_to_home_bt_trails_by_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/trails_by_type_bar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="95dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/result1_bt_trails_by_type"
+                    android:layout_width="370dp"
+                    android:layout_height="50dp"
+                    android:background="#00BCD4"
+                    android:text="Result 1"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/result2_bt_trails_by_type"
+                    android:layout_width="370dp"
+                    android:layout_height="50dp"
+                    android:background="#4CAF50"
+                    android:text="Result 2"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/result3_bt_trails_by_type"
+                    android:layout_width="370dp"
+                    android:layout_height="50dp"
+                    android:background="#FFC107"
+                    android:text="Result 3"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            tools:context=".examples.basics.SimpleMapViewActivity"
+            tools:ignore="RedundantNamespace">
+
+            <com.mapbox.mapboxsdk.maps.MapView
+                android:id="@+id/mapView_trails_by_type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:mapbox_cameraTargetLat="40.73581"
+                app:mapbox_cameraTargetLng="-73.99155"
+                app:mapbox_cameraZoom="11" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/options_bar_trails_by_type"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/settings_bt_trails_by_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/settings_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/discover_new_trails_bt_trails_by_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/discover_new_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/active_trail_bt_trails_by_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/active_trail_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/my_trails_bt_trails_by_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/my_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/music_bt_trails_by_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/music_bt_bar"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

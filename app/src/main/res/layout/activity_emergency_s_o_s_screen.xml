@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmergencySOSScreen">
+
+    <LinearLayout
+        android:id="@+id/emergency_sos_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/back_to_home_bt_emergency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/emergency_bar" />
+
+        <ListView
+            android:id="@+id/contact_list_emergency"
+            android:layout_width="match_parent"
+            android:layout_height="550dp" />
+
+        <LinearLayout
+            android:id="@+id/options_bar_emergency"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/settings_bt_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/settings_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/discover_new_trails_bt_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/discover_new_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/active_trail_bt_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/active_trail_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/my_trails_bt_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/my_trails_bt_bar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/music_bt_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/music_bt_bar"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

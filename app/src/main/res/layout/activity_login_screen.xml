@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_screen_bg"
+    tools:context=".LoginScreen">
+
+    <EditText
+        android:id="@+id/username_tb"
+        android:layout_width="410dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="455dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="349dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/username_tb"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/password_tb"
+        android:layout_width="410dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="576dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="228dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/password_tb"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="410dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="665dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="154dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/antic_slab"
+        android:text="@string/forgot_password_tb"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/login_bt_HS"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="752dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="42dp"
+        android:background="@drawable/login_bt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vertical_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterScreen">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/reg_image"
+                android:layout_width="match_parent"
+                android:layout_height="371dp"
+                app:srcCompat="@drawable/trailx_icon"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/reg_tv"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/Register_view"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textColorHint="#00FF11"
+                android:textIsSelectable="false"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/full_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/fullname_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:hint="@string/fullname_tb"
+                android:inputType="textPersonName"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/age_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/age_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:hint="@string/age_tb"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textSize="24sp"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/gender_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/gender_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/user_male_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:textAlignment="textStart"
+                android:textSize="24sp"
+                android:text="@string/male_radio_bt"/>
+
+            <RadioButton
+                android:id="@+id/user_female_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/female_radio_bt"
+                android:textAlignment="textStart"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/user_other_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/other_radio_bt"
+                android:textAlignment="textStart"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/email_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/email_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email_tb"
+                android:textSize="24sp"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/height_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/height_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:hint="@string/height_tb"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textSize="24sp"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/weight_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/weight_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:hint="@string/weight_tb"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textSize="24sp"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/username_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/username_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_username"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:hint="@string/username_tb"
+                android:inputType="textPersonName"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/password_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/password_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_password"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:hint="@string/password_tb"
+                android:inputType="textPassword"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/conf_password_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/conf_password_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/user_conf_password"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:hint="@string/password_tb"
+                android:inputType="textPassword"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/register_bt_HS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_bt"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
