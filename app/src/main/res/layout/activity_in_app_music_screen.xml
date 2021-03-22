@@ -38,7 +38,8 @@
                     android:layout_height="330dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/headphones" />
+                    android:src="@drawable/headphones"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/songTitle_in_app_music"
@@ -72,19 +73,22 @@
                         android:id="@+id/prev_bt_in_app_music"
                         android:layout_width="60dp"
                         android:layout_height="40dp"
-                        android:src="@android:drawable/ic_media_previous" />
+                        android:src="@android:drawable/ic_media_previous"
+                        tools:ignore="ContentDescription" />
 
                     <ImageView
                         android:id="@+id/play_bt_in_app_music"
                         android:layout_width="60dp"
                         android:layout_height="40dp"
-                        android:src="@android:drawable/ic_media_play" />
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="ContentDescription" />
 
                     <ImageView
                         android:id="@+id/next_bt_in_app_music"
                         android:layout_width="60dp"
                         android:layout_height="40dp"
-                        android:src="@android:drawable/ic_media_next" />
+                        android:src="@android:drawable/ic_media_next"
+                        tools:ignore="ContentDescription" />
 
                 </LinearLayout>
 
@@ -100,7 +104,8 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/soundmin" />
+                        android:src="@drawable/soundmin"
+                        tools:ignore="ContentDescription" />
 
                     <SeekBar
                         android:id="@+id/seekBarVol_in_app_music"
@@ -112,7 +117,8 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/soundmax" />
+                        android:src="@drawable/soundmax"
+                        tools:ignore="ContentDescription"/>
 
                 </LinearLayout>
 

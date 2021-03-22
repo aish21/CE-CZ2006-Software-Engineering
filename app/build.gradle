@@ -16,6 +16,11 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -41,4 +46,6 @@ dependencies {
         transitive = true
     }
     implementation 'com.mapbox.mapboxsdk:mapbox-android-telemetry:7.0.0'
+    implementation project(':spotify-app-remote')
+    implementation "com.google.code.gson:gson:2.8.6"
 }
