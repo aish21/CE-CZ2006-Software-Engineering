@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -99,7 +99,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="393dp"
             tools:context=".examples.basics.SimpleMapViewActivity"
             tools:ignore="RedundantNamespace">
 

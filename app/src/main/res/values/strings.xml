@@ -25,7 +25,7 @@
     <string name="total_distance_stats">Total Distance: </string>
     <string name="total_calories_stats">Total Calories: </string>
     <string name="badges_earned_stats">Badges Earned: </string>
-    <string name="access_token">pk.eyJ1IjoiYXNoc29uZ2giLCJhIjoiY2ttZDQ1bGRpMDBzbzJucGo4NThtdTBrMSJ9.ji4izvdGr40alDVLRjfkDA</string>
+    <string name="access_token">pk.eyJ1IjoiYXNoc29uZ2giLCJhIjoiY2ttZDQxbDgyMGM4ZjJwbXdwYXpsdTNxbSJ9.xJ9i_G0J9J1f4_NCRlESKA</string>
     <string name="dist_view">Enter Distance: </string>
     <string name="location_view">Enter Location: </string>
 </resources>

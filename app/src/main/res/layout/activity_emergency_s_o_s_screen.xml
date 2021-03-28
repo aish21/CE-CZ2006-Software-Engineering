@@ -25,7 +25,7 @@
         <ListView
             android:id="@+id/contact_list_emergency"
             android:layout_width="match_parent"
-            android:layout_height="550dp" />
+            android:layout_height="523dp" />
 
         <LinearLayout
             android:id="@+id/options_bar_emergency"

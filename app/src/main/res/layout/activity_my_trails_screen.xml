@@ -126,7 +126,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="358dp"
             tools:context=".examples.basics.SimpleMapViewActivity"
             tools:ignore="RedundantNamespace">
 

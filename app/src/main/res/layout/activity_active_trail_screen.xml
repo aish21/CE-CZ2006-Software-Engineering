@@ -26,7 +26,7 @@
         <FrameLayout
             android:id="@+id/map_layout_active_trail"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="350dp"
             tools:context=".examples.basics.SimpleMapViewActivity"
             tools:ignore="RedundantNamespace">
 
@@ -43,7 +43,7 @@
         <LinearLayout
             android:id="@+id/controls_layout_active_trail"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="173dp"
             android:background="#E3DBDB"
             android:orientation="vertical">
 

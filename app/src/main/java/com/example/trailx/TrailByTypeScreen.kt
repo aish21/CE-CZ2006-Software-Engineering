@@ -24,7 +24,7 @@ class TrailByTypeScreen : AppCompatActivity() {
         mapView_trails_by_type?.onCreate(savedInstanceState)
         mapView_trails_by_type?.getMapAsync { mapboxMap ->
             mapboxMap.setStyle(Style.MAPBOX_STREETS) {
-
+                Style.Builder().fromUri("mapbox://styles/ashsongh/ckmt73aky3hpc17l93d4rwbbt")
                 // Map is set up and the style has loaded. Now you can add data or make other map adjustments.
             }
         }

@@ -8,6 +8,7 @@ import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.maps.Style
 import kotlinx.android.synthetic.main.activity_active_trail_screen.*
 
+
 class ActiveTrailScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class ActiveTrailScreen : AppCompatActivity() {
         mapView_active_trail?.onCreate(savedInstanceState)
         mapView_active_trail?.getMapAsync { mapboxMap ->
             mapboxMap.setStyle(Style.MAPBOX_STREETS) {
-
+                Style.Builder().fromUri("mapbox://styles/ashsongh/ckmt73aky3hpc17l93d4rwbbt")
                 // Map is set up and the style has loaded. Now you can add data or make other map adjustments.
             }
         }
