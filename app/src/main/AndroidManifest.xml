@@ -20,7 +20,6 @@
         tools:ignore="AllowBackup">
         <activity android:name=".MusicScreen" />
         <activity android:name=".InAppMusicScreen" />
-        <activity android:name=".CustomiseTrailScreen" />
         <activity android:name=".TrailByTypeScreen" />
         <activity android:name=".TrailByDistanceScreen" />
         <activity android:name=".ActiveTrailScreen" />

@@ -51,10 +51,5 @@ class DiscoverNewTrailsScreen : AppCompatActivity() {
             val intent_trail_by_type_bt = Intent(this, TrailByTypeScreen::class.java)
             startActivity(intent_trail_by_type_bt)
         }
-        val custom_trail_bt = findViewById<Button>(R.id.customize_trail_bt_discover_new_trail)
-        custom_trail_bt.setOnClickListener {
-            val intent_custom_trail_bt = Intent(this, CustomiseTrailScreen::class.java)
-            startActivity(intent_custom_trail_bt)
-        }
     }
 }

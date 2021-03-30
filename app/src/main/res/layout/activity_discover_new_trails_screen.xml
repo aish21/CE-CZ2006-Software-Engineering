@@ -41,11 +41,6 @@
                 android:layout_height="150dp"
                 android:background="@drawable/trail_by_type_bt" />
 
-            <Button
-                android:id="@+id/customize_trail_bt_discover_new_trail"
-                android:layout_width="370dp"
-                android:layout_height="150dp"
-                android:background="@drawable/customize_trail_bt" />
         </LinearLayout>
 
         <LinearLayout
