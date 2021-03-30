@@ -25,7 +25,7 @@ class InAppMusicScreen : AppCompatActivity() {
     private lateinit var next: ImageView
     private var imageView: ImageView? = null
     private var songTitle: TextView? = null
-    private var mSeekBarTime: SeekBar? = null
+    //private var mSeekBarTime: SeekBar? = null
     private lateinit var mSeekBarVol: SeekBar
     // private val runnable: Runnable? = null
     private var mAudioManager: AudioManager? = null
@@ -79,7 +79,7 @@ class InAppMusicScreen : AppCompatActivity() {
         next = findViewById(R.id.next_bt_in_app_music)
         songTitle = findViewById(R.id.songTitle_in_app_music)
         imageView = findViewById(R.id.album_cover_in_app_music)
-        mSeekBarTime = findViewById(R.id.seekBarTime_in_app_music)
+        //mSeekBarTime = findViewById(R.id.seekBarTime_in_app_music)
         mSeekBarVol = findViewById(R.id.seekBarVol_in_app_music)
 
         // creating an ArrayList to store our songs
@@ -115,7 +115,7 @@ class InAppMusicScreen : AppCompatActivity() {
 
         //above seekbar volume
         play.setOnClickListener {
-            with(mSeekBarTime) { this!!.max = mMediaPlayer.duration }
+            //with(mSeekBarTime) { this!!.max = mMediaPlayer.duration }
             if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) {
                 mMediaPlayer!!.pause()
                 play.setImageResource(R.drawable.pause_btn_player)
@@ -196,20 +196,20 @@ class InAppMusicScreen : AppCompatActivity() {
         }
         // seekbar duration
         mMediaPlayer?.setOnPreparedListener {
-            mSeekBarTime?.max = mMediaPlayer!!.duration
+            //mSeekBarTime?.max = mMediaPlayer!!.duration
             mMediaPlayer!!.start()
         }
-        mSeekBarTime?.setOnSeekBarChangeListener(object: OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar:SeekBar, progress:Int, fromUser:Boolean) {
+        //mSeekBarTime?.setOnSeekBarChangeListener(object: OnSeekBarChangeListener {
+        fun onProgressChanged(seekBar:SeekBar, progress:Int, fromUser:Boolean) {
                 if (fromUser) {
                     mMediaPlayer?.seekTo(progress)
-                    mSeekBarTime?.progress = progress
+                    //mSeekBarTime?.progress = progress
                 }
             }
-            override fun onStartTrackingTouch(seekBar:SeekBar) {}
-            override fun onStopTrackingTouch(seekBar:SeekBar) {
+            fun onStartTrackingTouch(seekBar:SeekBar) {}
+            fun onStopTrackingTouch(seekBar:SeekBar) {
             }
-        })
+        //})
         Thread {
             while (mMediaPlayer != null) {
                 try {
@@ -231,7 +231,7 @@ class InAppMusicScreen : AppCompatActivity() {
     object : Handler() {
         @SuppressLint("HandlerLeak")
         override fun handleMessage(@SuppressLint("HandlerLeak") msg: Message) {
-            mSeekBarTime!!.progress = msg.what
+            //mSeekBarTime!!.progress = msg.what
         }
     }
 

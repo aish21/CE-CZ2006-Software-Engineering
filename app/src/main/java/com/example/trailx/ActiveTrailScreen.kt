@@ -788,265 +788,838 @@ class ActiveTrailScreen : AppCompatActivity() {
             1.35881))
         (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84942,
             1.35889))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84634, 1.28014))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632, 1.28017))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623, 1.28032))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84616, 1.28042))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84615, 1.2805))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84607, 1.28063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84597, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84585, 1.28095))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28137))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28139))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.2814))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28147))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84558, 1.28148))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.2815))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.28151))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847904, 1.281251))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847890, 1.281257))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847869, 1.281268))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847840, 1.281288))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847825, 1.281299))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847800, 1.281312))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84776, 1.28134))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84763, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84757, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84751, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84746, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84742, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84735, 1.28144))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84701, 1.2809))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84694, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84689, 1.28064))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84671, 1.28018))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84667, 1.28006))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84666, 1.28001))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84646, 1.28008))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84637, 1.28012))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84634, 1.28014))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632, 1.28017))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623, 1.28032))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84616, 1.28042))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84615, 1.2805))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84607, 1.28063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84597, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84585, 1.28095))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28137))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28139))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.2814))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28147))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84558, 1.28148))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.2815))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.28151))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847904, 1.281251))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847890, 1.281257))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847869, 1.281268))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847840, 1.281288))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847825, 1.281299))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847800, 1.281312))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84776, 1.28134))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84763, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84757, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84751, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84746, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84742, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84735, 1.28144))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84701, 1.2809))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84694, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84689, 1.28064))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84671, 1.28018))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84667, 1.28006))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84666, 1.28001))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84646, 1.28008))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84637, 1.28012))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84634, 1.28014))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632, 1.28017))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623, 1.28032))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84616, 1.28042))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84615, 1.2805))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84607, 1.28063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84597, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84585, 1.28095))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28137))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28139))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.2814))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28147))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84558, 1.28148))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.2815))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.28151))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847904, 1.281251))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847890, 1.281257))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847869, 1.281268))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847840, 1.281288))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847825, 1.281299))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847800, 1.281312))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84776, 1.28134))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84763, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84757, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84751, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84746, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84742, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84735, 1.28144))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84701, 1.2809))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84694, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84689, 1.28064))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84671, 1.28018))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84667, 1.28006))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84666, 1.28001))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84646, 1.28008))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84637, 1.28012))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84634, 1.28014))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632, 1.28017))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623, 1.28032))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84616, 1.28042))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84615, 1.2805))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84607, 1.28063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84597, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84585, 1.28095))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28137))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28139))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.2814))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28147))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84558, 1.28148))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.2815))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.28151))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847904, 1.281251))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847890, 1.281257))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847869, 1.281268))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847840, 1.281288))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847825, 1.281299))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847800, 1.281312))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84776, 1.28134))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84763, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84757, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84751, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84746, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84742, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84735, 1.28144))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84701, 1.2809))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84694, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84689, 1.28064))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84671, 1.28018))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84667, 1.28006))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84666, 1.28001))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84646, 1.28008))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84637, 1.28012))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84634, 1.28014))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632, 1.28017))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623, 1.28032))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84616, 1.28042))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84615, 1.2805))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84607, 1.28063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84597, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84585, 1.28095))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28137))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28139))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.2814))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28147))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84558, 1.28148))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.2815))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.28151))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847904, 1.281251))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847890, 1.281257))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847869, 1.281268))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847840, 1.281288))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847825, 1.281299))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847800, 1.281312))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84776, 1.28134))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84763, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84757, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84751, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84746, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84742, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84735, 1.28144))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84701, 1.2809))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84694, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84689, 1.28064))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84671, 1.28018))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84667, 1.28006))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84666, 1.28001))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84646, 1.28008))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84637, 1.28012))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84634, 1.28014))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632, 1.28017))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623, 1.28032))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84616, 1.28042))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84615, 1.2805))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84607, 1.28063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84597, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84585, 1.28095))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28137))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28139))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.2814))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28147))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84558, 1.28148))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.2815))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.28151))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847904, 1.281251))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847890, 1.281257))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847869, 1.281268))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847840, 1.281288))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847825, 1.281299))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.847800, 1.281312))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84776, 1.28134))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84763, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84757, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84751, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84746, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84742, 1.28142))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84735, 1.28144))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84701, 1.2809))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84694, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84689, 1.28064))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84671, 1.28018))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84667, 1.28006))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84666, 1.28001))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84646, 1.28008))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84637, 1.28012))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84634, 1.28014))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632, 1.28017))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623, 1.28032))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84616, 1.28042))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84615, 1.2805))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84607, 1.28063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84597, 1.28077))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84585, 1.28095))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28137))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28139))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.2814))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456, 1.28143))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28147))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84558, 1.28148))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.2815))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556, 1.28151))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84559, 1.28138))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84942,
+            1.35894))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84942,
+            1.35902))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84942,
+            1.35908))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84943,
+            1.35914))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84944,
+            1.35922))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84947,
+            1.35931))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84953,
+            1.3595))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84956,
+            1.35959))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84956,
+            1.35959))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(03.84951,
+            1.35968))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84948,
+            1.35976))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84946,
+            1.35981))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84946,
+            1.35987))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84946,
+            1.35995))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84942,
+            1.36015))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84934,
+            1.36033))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84915,
+            1.36066))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84908,
+            1.36077))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84908,
+            1.36077))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84904,
+            1.36082))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84898,
+            1.36084))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84896,
+            1.36085))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84894,
+            1.36086))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84891,
+            1.36087))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84889,
+            1.36088))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84886,
+            1.36088))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84884,
+            1.36088))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84882,
+            1.36088))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84879,
+            1.36088))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84876,
+            1.36088))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84868,
+            1.36085))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84868,
+            1.36085))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84868,
+            1.36103))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8487,
+            1.36113))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84872,
+            1.3612))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84874,
+            1.36122))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84876,
+            1.36124))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84893,
+            1.36138))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84903,
+            1.36146))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84904,
+            1.36149))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84906,
+            1.36154))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84907,
+            1.3616))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84907,
+            1.36171))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84909,
+            1.36176))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84911,
+            1.36183))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84911,
+            1.36183))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84907,
+            1.36189))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84905,
+            1.36191))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84895,
+            1.36196))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84886,
+            1.36199))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84875,
+            1.362))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84869,
+            1.362))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84861,
+            1.362))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84853,
+            1.36199))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84844,
+            1.36198))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84834,
+            1.36199))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84829,
+            1.36199))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84826,
+            1.362))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8482,
+            1.36202))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84816,
+            1.36204))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84808,
+            1.36208))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84804,
+            1.36211))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.848,
+            1.36214))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84794,
+            1.3622))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84786,
+            1.36228))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84784,
+            1.3623))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84779,
+            1.36234))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84771,
+            1.3624))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84761,
+            1.36245))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84753,
+            1.3625))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84745,
+            1.36254))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84738,
+            1.36257))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84732,
+            1.36258))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84722,
+            1.36258))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84717,
+            1.36258))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84714,
+            1.36259))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84695,
+            1.3626))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84681,
+            1.36262))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84674,
+            1.36262))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84664,
+            1.36263))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84659,
+            1.36264))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84659,
+            1.36264))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84659,
+            1.36257))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84658,
+            1.36231))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84657,
+            1.36228))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84656,
+            1.36223))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84656,
+            1.36223))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84632,
+            1.36221))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84628,
+            1.36221))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84623,
+            1.36219))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84611,
+            1.36214))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84599,
+            1.3621))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84586,
+            1.36208))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84578,
+            1.36208))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84568,
+            1.3621))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84555,
+            1.36213))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84542,
+            1.36218))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84532,
+            1.36224))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84523,
+            1.3623))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84517,
+            1.36235))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84512,
+            1.3624))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84505,
+            1.36246))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84494,
+            1.36259))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84494,
+            1.36259))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84515,
+            1.36282))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84522,
+            1.36291))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84534,
+            1.36305))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84552,
+            1.3631))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84563,
+            1.36314))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84563,
+            1.36314))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84562,
+            1.3632))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84561,
+            1.36323))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8456,
+            1.36327))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84558,
+            1.3633))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84556,
+            1.36332))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84554,
+            1.36333))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84552,
+            1.36334))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84548,
+            1.36336))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84545,
+            1.36336))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8454,
+            1.36336))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84535,
+            1.36335))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8453,
+            1.36337))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84526,
+            1.36337))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84522,
+            1.36337))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84518,
+            1.36336))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84515,
+            1.36335))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84513,
+            1.36333))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84509,
+            1.36329))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84508,
+            1.36326))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84507,
+            1.36322))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84506,
+            1.36316))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84506,
+            1.36316))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84477,
+            1.36319))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84477,
+            1.36319))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84474,
+            1.36314))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84472,
+            1.36309))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84471,
+            1.36303))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84469,
+            1.36297))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84468,
+            1.36293))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84465,
+            1.36289))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84465,
+            1.36289))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84462,
+            1.36285))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84462,
+            1.36285))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84451,
+            1.36293))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84442,
+            1.36299))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8443,
+            1.36305))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84418,
+            1.36309))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84405,
+            1.36309))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84396,
+            1.36309))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84385,
+            1.36309))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84385,
+            1.36309))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84385,
+            1.36316))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84384,
+            1.36322))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84382,
+            1.36329))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84378,
+            1.36337))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84374,
+            1.36343))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84372,
+            1.36345))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84367,
+            1.3635))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84356,
+            1.36361))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8435,
+            1.36367))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84344,
+            1.36371))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84333,
+            1.36378))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84323,
+            1.36386))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84317,
+            1.36391))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84317,
+            1.36391))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84308,
+            1.36382))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84306,
+            1.36379))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84303,
+            1.36375))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84301,
+            1.36373))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84299,
+            1.3637))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84298,
+            1.36367))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84293,
+            1.36359))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84289,
+            1.36351))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84287,
+            1.36348))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84285,
+            1.36346))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84282,
+            1.36344))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84267,
+            1.36294))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84264,
+            1.36283))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84256,
+            1.36258))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84251,
+            1.36241))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84247,
+            1.3623))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84244,
+            1.36222))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84242,
+            1.36214))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84242,
+            1.36214))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84244,
+            1.36212))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84246,
+            1.36209))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84247,
+            1.36208))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84245,
+            1.36205))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84244,
+            1.36201))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84241,
+            1.36198))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84239,
+            1.36192))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84237,
+            1.36188))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84237,
+            1.36184))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84237,
+            1.36184))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84234,
+            1.36183))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84233,
+            1.36184))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84222,
+            1.36187))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84221,
+            1.36188))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84207,
+            1.36192))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84204,
+            1.36194))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84204,
+            1.36194))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84205,
+            1.36196))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8421,
+            1.36213))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84214,
+            1.36226))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84216,
+            1.36228))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84216,
+            1.36229))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84217,
+            1.3623))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84218,
+            1.3623))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8422,
+            1.36231))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84221,
+            1.36233))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84232,
+            1.36266))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84238,
+            1.36283))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84241,
+            1.36294))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8425,
+            1.36323))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84255,
+            1.36338))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84253,
+            1.36349))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84253,
+            1.36359))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84252,
+            1.36371))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84251,
+            1.36377))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84249,
+            1.36384))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84249,
+            1.36384))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84239,
+            1.36381))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84232,
+            1.36379))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84223,
+            1.36378))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84214,
+            1.36377))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84208,
+            1.36378))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84199,
+            1.36382))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84186,
+            1.36388))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84179,
+            1.36392))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84179,
+            1.36392))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84181,
+            1.36384))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84181,
+            1.36378))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84181,
+            1.36374))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84179,
+            1.36368))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84177,
+            1.36365))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84176,
+            1.36363))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84173,
+            1.36359))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84169,
+            1.36354))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84165,
+            1.36351))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84164,
+            1.3635))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84156,
+            1.36348))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8415,
+            1.36346))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8414,
+            1.36344))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84134,
+            1.36343))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84125,
+            1.36343))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84111,
+            1.36345))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84098,
+            1.36348))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84086,
+            1.36352))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84074,
+            1.36357))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84064,
+            1.36361))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84044,
+            1.36365))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84038,
+            1.36363))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84032,
+            1.36362))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84031,
+            1.36362))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.84025,
+            1.36359))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84018,
+            1.36357))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8401,
+            1.36354))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.84004,
+            1.36352))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83996,
+            1.36351))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83992,
+            1.36352))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83988,
+            1.36353))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83981,
+            1.36356))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83973,
+            1.3636))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83966,
+            1.36363))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83961,
+            1.36365))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83957,
+            1.36365))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83953,
+            1.36365))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83946,
+            1.36364))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83946,
+            1.36364))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8394,
+            1.36381))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83938,
+            1.36386))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83937,
+            1.36391))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83937,
+            1.36396))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83937,
+            1.364))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83938,
+            1.36404))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8394,
+            1.36411))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83944,
+            1.36424))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83955,
+            1.36453))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83955,
+            1.36453))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83945,
+            1.36456))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83934,
+            1.36459))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83926,
+            1.36461))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83916,
+            1.36463))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83905,
+            1.36465))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83895,
+            1.36468))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83887,
+            1.3647))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8388,
+            1.36473))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83874,
+            1.36475))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83869,
+            1.36478))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83866,
+            1.3648))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83863,
+            1.36484))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83861,
+            1.3649))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83858,
+            1.36497))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83855,
+            1.36504))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.83849,
+            1.3651))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83839,
+            1.36521))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83831,
+            1.36526))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83825,
+            1.36529))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8382,
+            1.36531))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83813,
+            1.36534))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.838,
+            1.36537))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8379,
+            1.36538))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8378,
+            1.3654))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8377,
+            1.36541))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83766,
+            1.36541))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83757,
+            1.36542))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83744,
+            1.36545))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83732,
+            1.36548))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83717,
+            1.36552))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83716,
+            1.36552))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83713,
+            1.36553))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83704,
+            1.36555))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83694,
+            1.36557))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83676,
+            1.36561))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83665,
+            1.36564))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83662,
+            1.36565))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83654,
+            1.3657))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83646,
+            1.36574))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83645,
+            1.36574))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83633,
+            1.3658))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8363,
+            1.36582))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83625,
+            1.36583))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8362,
+            1.36584))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83611,
+            1.36586))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83609,
+            1.36587))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83598,
+            1.36589))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83596,
+            1.3659))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83593,
+            1.36592))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83583,
+            1.36598))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83574,
+            1.36604))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83565,
+            1.3661))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83556,
+            1.36614))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8355,
+            1.36616))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8354,
+            1.36619))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.83536,
+            1.3662))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83529,
+            1.36621))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8352,
+            1.36623))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8351,
+            1.36623))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83503,
+            1.36622))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8349,
+            1.3662))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8348,
+            1.36619))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83472,
+            1.3662))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83462,
+            1.36622))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83454,
+            1.36625))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83448,
+            1.36628))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83441,
+            1.36631))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83437,
+            1.36636))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83427,
+            1.36645))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8342,
+            1.36652))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83412,
+            1.3666))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83403,
+            1.36663))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83389,
+            1.36665))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83386,
+            1.36665))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83378,
+            1.36666))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83365,
+            1.36667))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83352,
+            1.36668))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8333,
+            1.36687))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83322,
+            1.36698))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83309,
+            1.36701))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.833,
+            1.36706))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83296,
+            1.36709))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83282,
+            1.36715))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8326,
+            1.36725))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83251,
+            1.36728))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83242,
+            1.36731))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83225,
+            1.36734))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83211,
+            1.36737))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83192,
+            1.36744))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83178,
+            1.36749))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83173,
+            1.36751))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83165,
+            1.36751))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83155,
+            1.36751))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83138,
+            1.36753))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83137,
+            1.36753))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.83123,
+            1.36756))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83115,
+            1.36755))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83107,
+            1.36753))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83098,
+            1.36748))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83091,
+            1.36745))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83086,
+            1.36743))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83081,
+            1.36743))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83076,
+            1.36742))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83073,
+            1.36742))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83067,
+            1.36744))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8303,
+            1.36756))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83028,
+            1.36757))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83028,
+            1.36757))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83023,
+            1.36758))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83017,
+            1.36759))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83009,
+            1.36759))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.83001,
+            1.36758))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82993,
+            1.36756))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82987,
+            1.36755))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82982,
+            1.36752))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82975,
+            1.36749))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82968,
+            1.36748))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82962,
+            1.36747))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82956,
+            1.36748))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82951,
+            1.3675))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82945,
+            1.36753))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8294,
+            1.36757))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82937,
+            1.36759))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82933,
+            1.3676))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82929,
+            1.36759))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82925,
+            1.36758))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82922,
+            1.36757))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82919,
+            1.36755))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82917,
+            1.36754))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82917,
+            1.36754))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82912,
+            1.36754))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8291,
+            1.36754))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82902,
+            1.36752))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82899,
+            1.36752))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.82896,
+            1.36752))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat( 103.82892,
+            1.36752))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8288,
+            1.36756))
     }
 
     override fun onResume() {

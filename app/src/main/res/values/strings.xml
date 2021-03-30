@@ -28,4 +28,6 @@
     <string name="access_token">pk.eyJ1IjoiYXNoc29uZ2giLCJhIjoiY2ttZDQxbDgyMGM4ZjJwbXdwYXpsdTNxbSJ9.xJ9i_G0J9J1f4_NCRlESKA</string>
     <string name="dist_view">Enter Distance: </string>
     <string name="location_view">Enter Location: </string>
+    <string name="name_of_trail_view">Trail Name: </string>
+    <string name="type_of_trail_view">Trail Type: </string>
 </resources>

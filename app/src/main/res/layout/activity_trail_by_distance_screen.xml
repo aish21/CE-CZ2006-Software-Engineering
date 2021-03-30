@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -61,57 +61,69 @@
                 android:background="@android:drawable/ic_menu_search" />
         </LinearLayout>
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp">
+            android:layout_height="488dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/name_trail_by_distance_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/name_of_trail_view"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/result1_bt_trails_by_dist"
-                    android:layout_width="370dp"
-                    android:layout_height="50dp"
-                    android:background="#00BCD4"
-                    android:text="Result 1"
-                    tools:ignore="HardcodedText" />
-
-                <Button
-                    android:id="@+id/result2_bt_trails_by_dist"
-                    android:layout_width="370dp"
-                    android:layout_height="50dp"
-                    android:background="#4CAF50"
-                    android:text="Result 2"
-                    tools:ignore="HardcodedText" />
-
-                <Button
-                    android:id="@+id/result3_bt_trails_by_dist"
-                    android:layout_width="370dp"
-                    android:layout_height="50dp"
-                    android:background="#FFC107"
-                    android:text="Result 3"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-        </ScrollView>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="393dp"
-            tools:context=".examples.basics.SimpleMapViewActivity"
-            tools:ignore="RedundantNamespace">
-
-            <com.mapbox.mapboxsdk.maps.MapView
-                android:id="@+id/mapView_trails_by_dist"
+            <TextView
+                android:id="@+id/name_trail_by_distance"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:mapbox_cameraTargetLat="40.73581"
-                app:mapbox_cameraTargetLng="-73.99155"
-                app:mapbox_cameraZoom="11" />
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:textSize="30sp" />
 
-        </FrameLayout>
+            <TextView
+                android:id="@+id/distance_trail_by_distance_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic_slab"
+                android:text="@string/total_distance_stats"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#20710B"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textIsSelectable="false"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/trail_distance_trail_by_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/antic_slab"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/start_trail_trails_by_dist"
+                android:layout_width="370dp"
+                android:layout_height="50dp"
+                android:background="#00BCD4"
+                android:text="Start Trail"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/options_bar_trails_by_dist"
