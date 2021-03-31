@@ -17,6 +17,7 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.multidex.BuildConfig
 import java.util.*
 
 class InAppMusicScreen : AppCompatActivity() {

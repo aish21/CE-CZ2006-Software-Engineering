@@ -34,9 +34,9 @@
                 android:id="@+id/mapView_active_trail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:mapbox_cameraTargetLat="-76.9318701589"
-                app:mapbox_cameraTargetLng="38.8439645544"
-                app:mapbox_cameraZoom="25" />
+                app:mapbox_cameraTargetLat="1.347041"
+                app:mapbox_cameraTargetLng="103.679938"
+                app:mapbox_cameraZoom="15" />
 
         </FrameLayout>
 
