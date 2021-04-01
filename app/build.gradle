@@ -50,10 +50,15 @@ dependencies {
     implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:8.5.1@aar') {
         transitive = true
     }
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.android.volley:volley:1.2.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-telemetry:7.0.0'
     implementation project(':spotify-app-remote')
     implementation "com.google.code.gson:gson:2.8.6"
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.6'
     implementation 'androidx.multidex:multidex:2.0.1'
+    testImplementation 'junit:junit:4.13.2'
+    compile files('libs/json-20210307.jar')
+    implementation fileTree(dir: 'libs', include: ['json-20210307.jar'])
 }

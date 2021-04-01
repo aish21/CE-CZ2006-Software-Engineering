@@ -30,6 +30,17 @@ import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import kotlinx.android.synthetic.main.activity_active_trail_screen.*
 import java.util.*
+import android.location.Location
+import android.util.Log
+import android.widget.TextView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener {
 

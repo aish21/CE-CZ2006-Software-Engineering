@@ -17,5 +17,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        //WeatherForecast.main()
     }
 }

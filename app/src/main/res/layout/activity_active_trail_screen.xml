@@ -26,7 +26,7 @@
         <FrameLayout
             android:id="@+id/map_layout_active_trail"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="340dp"
             tools:context=".examples.basics.SimpleMapViewActivity"
             tools:ignore="RedundantNamespace">
 
@@ -43,8 +43,8 @@
         <LinearLayout
             android:id="@+id/controls_layout_active_trail"
             android:layout_width="match_parent"
-            android:layout_height="173dp"
-            android:background="#E3DBDB"
+            android:layout_height="183dp"
+            android:background="#FFFFFF"
             android:orientation="vertical">
 
             <LinearLayout
@@ -126,18 +126,18 @@
 
                 <Button
                     android:id="@+id/play_bt_active_trail"
-                    android:layout_width="6dp"
+                    android:layout_width="5dp"
                     android:layout_height="55dp"
                     android:layout_weight="1"
-                    android:background="@android:drawable/ic_media_play"
+                    android:background="@drawable/play_bt_active_trail__1_"
                     tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/pause_bt_active_trail"
-                    android:layout_width="6dp"
+                    android:layout_width="5dp"
                     android:layout_height="55dp"
                     android:layout_weight="1"
-                    android:background="@android:drawable/ic_media_pause"
+                    android:background="@drawable/pause_bt_active_trail"
                     tools:ignore="ButtonStyle" />
 
                 <Button
