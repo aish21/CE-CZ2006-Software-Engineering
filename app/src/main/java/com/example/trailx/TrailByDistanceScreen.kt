@@ -94,14 +94,14 @@ class TrailByDistanceScreen : AppCompatActivity() {
                 check_condition = true
 
             } else if(final_distance in 2..5){
-                name_textDisplay.text = "Bedok Reservoir Loop Trail"
-                dist_textDisplay.text = "4.5km"
+                name_textDisplay.text = "Bukit Batok Trail"
+                dist_textDisplay.text = "2km"
                 Toast.makeText(this, "Trail found!", Toast.LENGTH_SHORT).show()
                 global.choice = 2
                 check_condition = true
             }else if(final_distance in 6..10){
-                name_textDisplay.text = "Bishan - Ang Mo Kio Trail"
-                dist_textDisplay.text = "6km"
+                name_textDisplay.text = "Bedok Reservoir Loop Trail"
+                dist_textDisplay.text = "7km"
                 Toast.makeText(this, "Trail found!", Toast.LENGTH_SHORT).show()
                 global.choice = 3
                 check_condition = true
