@@ -7,7 +7,7 @@
     <string name="email_tb">Enter Email here</string>
     <string name="height_tb">Enter Height here</string>
     <string name="weight_tb">Enter Weight here</string>
-    <string name="forgot_password_tb">Forgot Username/Password</string>
+    <string name="forgot_password_tb">Forgot Password</string>
     <string name="Register_view">Registration</string>
     <string name="fullname_view">Full Name: </string>
     <string name="age_view">Age: </string>

@@ -16,7 +16,7 @@
         android:layout_marginBottom="349dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/username_tb"
+        android:hint="@string/email_tb"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

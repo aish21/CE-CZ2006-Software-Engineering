@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "671065406800",
+    "project_id": "trailx",
+    "storage_bucket": "trailx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671065406800:android:a3fd381d980168623ec055",
+        "android_client_info": {
+          "package_name": "com.example.trailx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671065406800-4rtd4b0cdqntnpak5mc0ftov1q3fjla9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trailx",
+            "certificate_hash": "20014f7239aff391be1aa7db11e1288c4b5ea885"
+          }
+        },
+        {
+          "client_id": "671065406800-ap82nrm6ie5iaseqi4qidrig6nsffblr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF8N0vT7GT4wa9_kicAwwLRnN2v_04dB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671065406800-ap82nrm6ie5iaseqi4qidrig6nsffblr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

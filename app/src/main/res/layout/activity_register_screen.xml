@@ -110,32 +110,39 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/user_male_option"
+            <RadioGroup
+                android:id="@+id/gender_RG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/antic_slab"
-                android:textAlignment="textStart"
-                android:textSize="24sp"
-                android:text="@string/male_radio_bt"/>
+                android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/user_female_option"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/antic_slab"
-                android:text="@string/female_radio_bt"
-                android:textAlignment="textStart"
-                android:textSize="24sp" />
+                <RadioButton
+                    android:id="@+id/user_male_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp"
+                    android:text="@string/male_radio_bt"/>
 
-            <RadioButton
-                android:id="@+id/user_other_option"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/antic_slab"
-                android:text="@string/other_radio_bt"
-                android:textAlignment="textStart"
-                android:textSize="24sp" />
+                <RadioButton
+                    android:id="@+id/user_female_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/female_radio_bt"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
+
+                <RadioButton
+                    android:id="@+id/user_other_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/other_radio_bt"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/email_tv"
