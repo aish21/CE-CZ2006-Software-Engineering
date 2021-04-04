@@ -1,5 +1,6 @@
 package com.example.trailx
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ class MyAccountScreen : AppCompatActivity() {
     private lateinit var height_tv: TextView
     private lateinit var weight_tv: TextView
 
+    @SuppressLint("LogNotTimber")
     private fun readUserInfo() {
         val userFirebase = Firebase.auth.currentUser
         val database = Firebase.database.reference

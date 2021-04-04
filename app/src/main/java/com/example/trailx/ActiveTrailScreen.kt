@@ -1,14 +1,19 @@
-
 package com.example.trailx
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
+import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.android.volley.Request
+import com.android.volley.toolbox.Volley
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.geojson.Feature
@@ -29,25 +34,38 @@ import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import kotlinx.android.synthetic.main.activity_active_trail_screen.*
-import java.util.*
-import android.location.Location
-import android.util.Log
-import android.widget.TextView
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
+import java.util.*
+import com.android.volley.toolbox.StringRequest as StringRequest1
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.widget.Toolbar
+import android.os.Handler
+import android.view.View
+import android.widget.TextView
+import java.util.Locale
 
-class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener {
+@Suppress("DEPRECATED_IDENTITY_EQUALS")
+class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener, SensorEventListener, StepListener {
 
     private var permissionsManager: PermissionsManager = PermissionsManager(this)
     private lateinit var mapboxMap: MapboxMap
     private lateinit var mapView:MapView
     private lateinit var routeCoordinates:List<Point>
+    private var weather_url1 = "https://api.weatherbit.io/v2.0/current?&city=Singapore&country=Singapore&key=c53e108c3fe945af89c27144a19863a9"
+    // var api_id1 = "c53e108c3fe945af89c27144a19863a9"
+    private lateinit var weatherIcon:ImageView
+    private var textView: TextView? = null
+    private lateinit var simpleStepDetector:StepDetector
+    private lateinit var sensorManager:SensorManager
+    private lateinit var accel:Sensor
+    private var numSteps:Int = 0
+    private lateinit var step_count:TextView
+    private lateinit var calories:TextView
+    private var seconds = 0
+    // Is the stopwatch running?
+    private var running:Boolean = false
+    private var wasRunning:Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,43 +73,50 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         // object or in the same activity which contains the mapview.
         Mapbox.getInstance(this, getString(R.string.access_token))
 
-        // This contains the MapView in XML and needs to be called after the access token is configured.
         setContentView(R.layout.activity_active_trail_screen)
+        supportActionBar?.hide()
+        // Get an instance of the SensorManager
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        simpleStepDetector = StepDetector()
+        simpleStepDetector.registerListener(this)
+        step_count = findViewById<TextView>(R.id.distance_active_trail)
+        val BtnStart = findViewById<Button>(R.id.play_bt_active_trail)
+        val BtnStop = findViewById<Button>(R.id.end_bt_active_trail)
+        calories = findViewById<TextView>(R.id.calories_active_trail)
+        // This contains the MapView in XML and needs to be called after the access token is configured.
         mapView = findViewById(R.id.mapView_active_trail)
         mapView_active_trail?.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
-        /*
-        mapView.getMapAsync { mapboxMap ->
-            mapboxMap.setStyle(Style.OUTDOORS) { style ->
-                initRouteCoordinates02()
-                // Create the LineString from the list of coordinates and then make a GeoJSON
-                // FeatureCollection so we can add the line to our map as a layer.
-                style.addSource(
-                    GeoJsonSource(
-                        "line-source",
-                        FeatureCollection.fromFeatures(
-                            arrayOf<Feature>(
-                                Feature.fromGeometry(
-                                    LineString.fromLngLats(routeCoordinates)
-                                )
-                            )
-                        )
-                    )
-                )
-                // The layer properties for our line. This is where we make the line dotted, set the
-                // color, etc.
-                style.addLayer(
-                    LineLayer("linelayer", "line-source").withProperties(
-                        PropertyFactory.lineDasharray(arrayOf<Float>(0.01f, 2f)),
-                        PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
-                        PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
-                        PropertyFactory.lineWidth(5f),
-                        PropertyFactory.lineColor(Color.parseColor("#e55e5e"))
-                    )
-                )
-            }
-        }*/
-        supportActionBar?.hide()
+
+        BtnStart.setOnClickListener {
+            numSteps = 0
+            sensorManager.registerListener(
+                this@ActiveTrailScreen,
+                accel,
+                SensorManager.SENSOR_DELAY_FASTEST
+            )
+        }
+
+        BtnStop.setOnClickListener { sensorManager.unregisterListener(this@ActiveTrailScreen) }
+
+        weatherIcon = findViewById<ImageView>(R.id.weather_icon_active_trail)
+        getWeather()
+
+        if (savedInstanceState != null)
+        {
+            // Get the previous state of the stopwatch
+            // if the activity has been
+            // destroyed and recreated.
+            seconds = savedInstanceState
+                .getInt("seconds")
+            running = savedInstanceState
+                .getBoolean("running")
+            wasRunning = savedInstanceState
+                .getBoolean("wasRunning")
+        }
+        runTimer()
+
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_active_trail)
         back_to_home_bt_bar.setOnClickListener {
             val intent_back_to_home_bt_bar = Intent(this, HomeScreen::class.java)
@@ -124,6 +149,137 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             val intent_music_bt_bar = Intent(this, MusicScreen::class.java)
             startActivity(intent_music_bt_bar)
         }
+    }
+    // Start the stopwatch running when the Start button is clicked.
+    // Below method gets called when the Start button is clicked.
+    fun onClickStart(view:View) {
+        running = true
+    }
+    // Stop the stopwatch running when the Stop button is clicked.
+    // Below method gets called when the Stop button is clicked.
+    fun onClickStop(view:View) {
+        running = false
+    }
+    // Reset the stopwatch when the Reset button is clicked.
+    // Below method gets called when the Reset button is clicked.
+    fun onClickReset(view:View) {
+        running = false
+        seconds = 0
+    }
+    // Sets the Number of seconds on the timer.
+    // The runTimer() method uses a Handler to increment the seconds and update the text view.
+    private fun runTimer() {
+        // Get the text view.
+        val timeView = findViewById<TextView>(R.id.timer_active_trail)
+        // Creates a new Handler
+        val handler = Handler()
+        // Call the post() method, passing in a new Runnable.
+        // The post() method processes code without a delay,
+        // so the code in the Runnable will run almost immediately.
+        handler.post(object:Runnable {
+            public override fun run() {
+                val hours = seconds / 3600
+                val minutes = (seconds % 3600) / 60
+                val secs = seconds % 60
+                // Format the seconds into hours, minutes,
+                // and seconds.
+                val time = String
+                    .format(Locale.getDefault(),
+                        "%d:%02d:%02d", hours,
+                        minutes, secs)
+                // Set the text view text.
+                timeView.setText(time)
+                // If running is true, increment the
+                // seconds variable.
+                if (running)
+                {
+                    seconds++
+                }
+                // Post the code again
+                // with a delay of 1 second.
+                handler.postDelayed(this, 1000)
+            }
+        })
+    }
+
+    override fun onAccuracyChanged(sensor:Sensor, accuracy:Int) {}
+
+    override fun onSensorChanged(event:SensorEvent) {
+        if (event.sensor.getType() === Sensor.TYPE_ACCELEROMETER)
+        {
+            simpleStepDetector.updateAccel(
+                event.timestamp, event.values[0], event.values[1], event.values[2])
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun step(timeNs:Long) {
+        var cal = 0.0
+        val userHeight:EditText = findViewById<EditText>(R.id.user_height)
+        val userWeight:EditText = findViewById<EditText>(R.id.user_weight)
+        val userAge:EditText = findViewById<EditText>(R.id.user_age)
+        val height_s = userHeight.text.toString()
+        val weight_s = userWeight.text.toString()
+        val age_s = userAge.text.toString()
+        val height = java.lang.Float.parseFloat(height_s)
+        val weight = java.lang.Float.parseFloat(weight_s)
+        val age = java.lang.Float.parseFloat(age_s)
+        numSteps++
+        step_count.text = TEXT_NUM_STEPS + numSteps
+        val step = step_count.text.toString()
+        cal = Integer.parseInt(step).toDouble() * 0.4 * weight.toDouble() * age.toDouble() / (height * height)
+        calories.setText(cal.toInt())
+    }
+    companion object {
+        private const val TEXT_NUM_STEPS = "Number of Steps: "
+    }
+
+    @SuppressLint("LogNotTimber")
+    fun getWeather(){
+        // Instantiate the RequestQueue.
+        val queue = Volley.newRequestQueue(this)
+        val url: String = weather_url1
+
+        // Request a string response from the provided URL.
+        val stringReq = StringRequest1(Request.Method.GET, url,
+            { response ->
+                Log.e("lat", response.toString())
+
+                // get the JSON object
+                val obj = JSONObject(response)
+
+                // get the Array from obj of name - "data"
+                val arr = obj.getJSONArray("data")
+                Log.e("lat obj1", arr.toString())
+
+                // get the JSON object from the array at index position 0
+                val obj2 = arr.getJSONObject(0)
+                Log.e("lat obj2", obj2.toString())
+
+                // set the temperature and the city name using getString() function
+                //Log.e("code", obj3.getString("code"))
+                //Toast.makeText(this, obj2.getString("temp"), Toast.LENGTH_LONG).show()
+                //textView.text = obj2.getString("temp") + " deg Celcius in " + obj2.getString("city_name")
+
+                val finalvalueweather = obj2.getJSONObject("weather")
+                Log.e("finalvalueweather", finalvalueweather.toString())
+                Log.e("code", finalvalueweather.getString("code"))
+
+                val weathercode: Int = finalvalueweather.getString("code").toInt()
+
+                if (weathercode == 200 || weathercode == 201 || weathercode == 202 || weathercode == 230 || weathercode == 231 || weathercode == 232 || weathercode == 233) {
+                    weatherIcon.setImageResource(R.drawable.thunderstorm)
+                } else if (weathercode == 300 || weathercode == 301 || weathercode == 302 || weathercode == 500 || weathercode == 501 || weathercode == 502 || weathercode == 511 || weathercode == 520 || weathercode == 521 || weathercode == 522) {
+                    weatherIcon.setImageResource(R.drawable.rainy)
+                } else if (weathercode == 801 || weathercode == 802 || weathercode == 803 || weathercode == 804 || weathercode == 900) {
+                    weatherIcon.setImageResource(R.drawable.cloudy)
+                } else{
+                    weatherIcon.setImageResource(R.drawable.sunny)
+                }
+            },
+            // In case of any error
+            { Toast.makeText(this, "That didn't work!!", Toast.LENGTH_LONG).show() })
+        queue.add(stringReq)
     }
 
     override fun onMapReady(mapboxMap: MapboxMap) {
@@ -1819,122 +1975,122 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     fun initRouteCoordinates03() {
         // Bukit Batok Nature Park
         routeCoordinates = ArrayList<Point>()
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76481,1.35065))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76478,1.35066))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76477,1.35066))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76476,1.35066))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76474,1.35066))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76473,1.35065))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76471,1.35065))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7647,1.35063))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76468,1.35062))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76468,1.3506))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76467,1.35058))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76466,1.35057))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76466,1.35055))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76466,1.35053))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76465,1.35045))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76434,1.35012))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76407,1.34986))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76393,1.34973))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76373,1.34958))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76368,1.34955))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76326,1.34926))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76283,1.34904))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76263,1.34893))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76246,1.34885))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76238,1.34881))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7623,1.34876))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.762,1.34855))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76185,1.34845))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76183,1.34843))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7614,1.34813))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76129,1.34807))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76103,1.34792))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76096,1.34788))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76092,1.34787))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76092,1.34787))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76092,1.34782))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76093,1.34769))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76093,1.34769))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76117,1.3475))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7612,1.34743))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76129,1.34737))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76148,1.34725))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76174,1.34711))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76189,1.34706))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76223,1.34695))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76225,1.34695))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76252,1.3469))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76262,1.34689))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76279,1.34689))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76298,1.3469))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76315,1.34691))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76331,1.34693))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76342,1.34695))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76351,1.34699))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76355,1.34701))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76366,1.34709))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76372,1.34715))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76398,1.34739))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76425,1.34763))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76434,1.34772))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76442,1.34776))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76449,1.34779))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76455,1.34781))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76461,1.34783))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76467,1.34784))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76472,1.34784))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76473,1.34784))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76476,1.34784))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76483,1.34785))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76486,1.34784))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7649,1.34783))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76494,1.34782))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76499,1.34781))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76506,1.34778))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76514,1.34775))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76538,1.3476))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76538,1.3476))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76545,1.34777))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76551,1.34793))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76558,1.3481))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76564,1.34827))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76569,1.34839))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76571,1.34844))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76575,1.34853))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76585,1.3487))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.34872))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.34874))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.34876))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.34878))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.3488))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.34881))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.34883))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76585,1.34885))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76581,1.34892))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76581,1.34892))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76597,1.3491))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76616,1.34931))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76617,1.34932))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76618,1.34934))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76619,1.34936))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76619,1.34939))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76616,1.3498))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76616,1.3498))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76596,1.34979))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76592,1.34978))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76589,1.34978))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76587,1.34977))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586,1.34976))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76583,1.34973))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76582,1.34971))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76575,1.34958))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76573,1.34954))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76572,1.34952))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76562,1.34942))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76559,1.34939))
-        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76544,1.34925))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76481, 1.35065))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76478, 1.35066))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76477, 1.35066))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76476, 1.35066))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76474, 1.35066))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76473, 1.35065))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76471, 1.35065))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7647, 1.35063))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76468, 1.35062))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76468, 1.3506))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76467, 1.35058))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76466, 1.35057))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76466, 1.35055))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76466, 1.35053))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76465, 1.35045))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76434, 1.35012))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76407, 1.34986))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76393, 1.34973))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76373, 1.34958))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76368, 1.34955))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76326, 1.34926))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76283, 1.34904))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76263, 1.34893))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76246, 1.34885))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76238, 1.34881))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7623, 1.34876))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.762, 1.34855))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76185, 1.34845))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76183, 1.34843))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7614, 1.34813))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76129, 1.34807))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76103, 1.34792))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76096, 1.34788))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76092, 1.34787))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76092, 1.34787))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76092, 1.34782))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76093, 1.34769))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76093, 1.34769))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76117, 1.3475))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7612, 1.34743))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76129, 1.34737))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76148, 1.34725))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76174, 1.34711))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76189, 1.34706))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76223, 1.34695))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76225, 1.34695))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76252, 1.3469))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76262, 1.34689))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76279, 1.34689))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76298, 1.3469))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76315, 1.34691))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76331, 1.34693))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76342, 1.34695))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76351, 1.34699))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76355, 1.34701))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76366, 1.34709))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76372, 1.34715))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76398, 1.34739))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76425, 1.34763))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76434, 1.34772))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76442, 1.34776))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76449, 1.34779))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76455, 1.34781))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76461, 1.34783))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76467, 1.34784))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76472, 1.34784))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76473, 1.34784))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76476, 1.34784))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76483, 1.34785))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76486, 1.34784))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7649, 1.34783))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76494, 1.34782))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76499, 1.34781))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76506, 1.34778))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76514, 1.34775))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76538, 1.3476))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76538, 1.3476))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76545, 1.34777))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76551, 1.34793))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76558, 1.3481))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76564, 1.34827))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76569, 1.34839))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76571, 1.34844))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76575, 1.34853))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76585, 1.3487))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.34872))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.34874))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.34876))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.34878))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.3488))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.34881))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.34883))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76585, 1.34885))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76581, 1.34892))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76581, 1.34892))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76597, 1.3491))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76616, 1.34931))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76617, 1.34932))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76618, 1.34934))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76619, 1.34936))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76619, 1.34939))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76616, 1.3498))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76616, 1.3498))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76596, 1.34979))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76592, 1.34978))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76589, 1.34978))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76587, 1.34977))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76586, 1.34976))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76583, 1.34973))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76582, 1.34971))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76575, 1.34958))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76573, 1.34954))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76572, 1.34952))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76562, 1.34942))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76559, 1.34939))
+        (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76544, 1.34925))
         /*(routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76536,1.34917))
         (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.76532,1.34913))
         (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.7653,1.3491))
@@ -2101,6 +2257,11 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onResume() {
         super.onResume()
         mapView_active_trail?.onResume()
+        super.onResume()
+        if (wasRunning)
+        {
+            running = true
+        }
     }
     override fun onStart() {
         super.onStart()
@@ -2115,6 +2276,9 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onPause() {
         super.onPause()
         mapView_active_trail?.onPause()
+        super.onPause()
+        wasRunning = running
+        running = false
     }
 
     override fun onLowMemory() {
@@ -2130,5 +2294,8 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mapView_active_trail?.onSaveInstanceState(outState)
+        outState.putInt("seconds", seconds)
+        outState.putBoolean("running", running)
+        outState.putBoolean("wasRunning", wasRunning)
     }
 }

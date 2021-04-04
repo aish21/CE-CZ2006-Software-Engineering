@@ -58,7 +58,7 @@
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/my_account"
+                    app:srcCompat="@drawable/sunny"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -130,7 +130,8 @@
                     android:layout_height="55dp"
                     android:layout_weight="1"
                     android:background="@drawable/play_bt_active_trail__1_"
-                    tools:ignore="ButtonStyle" />
+                    tools:ignore="ButtonStyle"
+                    android:onClick="onClickStart"/>
 
                 <Button
                     android:id="@+id/pause_bt_active_trail"
@@ -138,7 +139,8 @@
                     android:layout_height="55dp"
                     android:layout_weight="1"
                     android:background="@drawable/pause_bt_active_trail"
-                    tools:ignore="ButtonStyle" />
+                    tools:ignore="ButtonStyle"
+                    android:onClick="onClickStop"/>
 
                 <Button
                     android:id="@+id/end_bt_active_trail"
@@ -146,7 +148,8 @@
                     android:layout_height="55dp"
                     android:layout_weight="1"
                     android:background="@drawable/end_bt_active_trail"
-                    tools:ignore="ButtonStyle" />
+                    tools:ignore="ButtonStyle"
+                    android:onClick="onClickReset"/>
             </LinearLayout>
         </LinearLayout>
 

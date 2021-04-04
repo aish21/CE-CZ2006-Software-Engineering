@@ -29,17 +29,16 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <WebView
+                android:id="@+id/webview_player_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <Button
                 android:id="@+id/yt_music_bt_music"
                 android:layout_width="370dp"
                 android:layout_height="150dp"
                 android:background="@drawable/yt_music_bt" />
-
-            <Button
-                android:id="@+id/spotify_bt_music"
-                android:layout_width="370dp"
-                android:layout_height="150dp"
-                android:background="@drawable/spotify_bt" />
 
             <Button
                 android:id="@+id/in_app_music_bt_music"

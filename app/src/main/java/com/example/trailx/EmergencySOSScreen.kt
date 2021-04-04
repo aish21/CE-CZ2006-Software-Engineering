@@ -1,27 +1,28 @@
 package com.example.trailx
 
 import android.Manifest
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
 import android.widget.Button
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import android.net.Uri
 
+@Suppress("DEPRECATED_IDENTITY_EQUALS")
 class EmergencySOSScreen : AppCompatActivity() {
-    companion object {
-        val PERMISSIONS_REQUEST_READ_CONTACTS = 100
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_emergency_s_o_s_screen)
-        loadContacts()
 
         supportActionBar?.hide()
+
+        val emergency_bt = findViewById<Button>(R.id.emergency_bt)
+        emergency_bt.setOnClickListener{
+            Emergency_onClick()
+        }
+
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_emergency)
         back_to_home_bt_bar.setOnClickListener{
             val intent_back_to_home_bt_bar = Intent(this, HomeScreen::class.java)
@@ -53,62 +54,15 @@ class EmergencySOSScreen : AppCompatActivity() {
             startActivity(intent_music_bt_bar)
         }
     }
-    private fun loadContacts() {
-        var builder = StringBuilder()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
-                Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS),
-                PERMISSIONS_REQUEST_READ_CONTACTS)
-            //callback onRequestPermissionsResult
-        } else {
-            getContacts().also { builder = it }
-            builder.toString().also { findViewById<ListView>(R.id.contact_list_emergency) }
+    fun Emergency_onClick() {
+        val number = "006594560494"
+        val intent = Intent(Intent.ACTION_CALL)
+        intent.data = Uri.parse("tel: + number")
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) !== PackageManager.PERMISSION_GRANTED)
+        { //TODO: Consider calling
+            return
         }
-    }
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
-                                            grantResults: IntArray) {
-        if (requestCode == PERMISSIONS_REQUEST_READ_CONTACTS) if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            loadContacts()
-        } else {
-            //  toast("Permission must be granted in order to display contacts information")
-        }
-    }
-
-    private fun getContacts(): StringBuilder {
-        val builder = StringBuilder()
-        val resolver: ContentResolver = contentResolver;
-        val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null,
-            null)
-
-        if (cursor != null) if (cursor.count > 0) {
-                while (cursor.moveToNext()) {
-                    val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-                    val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                    val phoneNumber = (cursor.getString(
-                        cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))).toInt()
-
-                    if (phoneNumber > 0) {
-                        val cursorPhone = contentResolver.query(
-                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                            null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", arrayOf(id), null)
-
-                        if (cursorPhone != null) {
-                            if(cursorPhone.count > 0) {
-                                while (cursorPhone.moveToNext()) {
-                                    val phoneNumValue = cursorPhone.getString(
-                                        cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                                    builder.append("Contact: ").append(name).append(", Phone Number: ").append(
-                                        phoneNumValue).append("\n\n")
-                                    Log.e("Name ===>",phoneNumValue);
-                                }
-                            }
-                        }
-                        cursorPhone?.close()
-                    }
-                }
-            }
-        cursor?.close()
-        return builder
+        startActivity(intent)
     }
 }

@@ -1,5 +1,6 @@
 package com.example.trailx
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -88,6 +89,7 @@ class RegisterScreen : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("LogNotTimber")
     private fun createUser (email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->

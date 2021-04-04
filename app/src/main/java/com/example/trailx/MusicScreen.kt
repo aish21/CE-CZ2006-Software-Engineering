@@ -1,25 +1,32 @@
 package com.example.trailx
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.spotify.android.appremote.api.ConnectionParams
-import com.spotify.android.appremote.api.Connector
-import com.spotify.android.appremote.api.SpotifyAppRemote
+import com.google.android.youtube.player.*
+import kotlinx.android.synthetic.main.activity_music_screen.*
 
 
 class MusicScreen : AppCompatActivity() {
-    private val CLIENT_ID = "6945fbec77614c7fb910a4baf1358056"
-    private val REDIRECT_URI = "http://671065406800-4rtd4b0cdqntnpak5mc0ftov1q3fjla9.apps.googleusercontent.com"
-    private var mSpotifyAppRemote: SpotifyAppRemote? = null
 
+    private lateinit var YTMusic:Button
+    private lateinit var youtubePlayer:YouTubePlayerView
+
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music_screen)
 
+        YTMusic = findViewById<Button>(R.id.yt_music_bt_music)
         supportActionBar?.hide()
+
+        YTMusic.setOnClickListener{
+            webview_player_view.settings.javaScriptEnabled = true
+            webview_player_view.loadUrl("https://www.youtube.com/watch?v=B-VJ6CQ76Gk")
+        }
+
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_music)
         back_to_home_bt_bar.setOnClickListener{
             val intent_back_to_home_bt_bar = Intent(this, HomeScreen::class.java)
@@ -58,37 +65,5 @@ class MusicScreen : AppCompatActivity() {
             val intent_in_app_music_bt = Intent(this, InAppMusicScreen::class.java)
             startActivity(intent_in_app_music_bt)
         }
-    }
-
-    protected override fun onStart() {
-        super.onStart()
-        val connectionParams = ConnectionParams.Builder(CLIENT_ID)
-            .setRedirectUri(REDIRECT_URI)
-            .showAuthView(true)
-            .build()
-        SpotifyAppRemote.connect(this, connectionParams,
-            object : Connector.ConnectionListener {
-                override fun onConnected(spotifyAppRemote: SpotifyAppRemote) {
-                    mSpotifyAppRemote = spotifyAppRemote
-                    Log.d("MusicScreen", "Connected! Yay!")
-
-                    // Now you can start interacting with App Remote
-                    connected()
-                }
-
-                override fun onFailure(throwable: Throwable) {
-                    Log.e("MusicScreen", throwable.message, throwable)
-
-                    // Something went wrong when attempting to connect! Handle errors here
-                }
-            })
-    }
-    private fun connected() {
-        // Then we will write some more code here.
-        mSpotifyAppRemote?.getPlayerApi()?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
-    }
-    protected override fun onStop() {
-        super.onStop()
-        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
     }
 }
