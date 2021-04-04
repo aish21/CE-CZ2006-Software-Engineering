@@ -67,8 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/antic_slab"
-                    android:text="@string/fullname_view"
-                    android:textAlignment="textStart"
+                    android:text="@string/timer_view"
+                    android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="#20710B"
                     android:textColorHighlight="#000000"
@@ -130,8 +130,7 @@
                     android:layout_height="55dp"
                     android:layout_weight="1"
                     android:background="@drawable/play_bt_active_trail__1_"
-                    tools:ignore="ButtonStyle"
-                    android:onClick="onClickStart"/>
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/pause_bt_active_trail"
@@ -139,8 +138,7 @@
                     android:layout_height="55dp"
                     android:layout_weight="1"
                     android:background="@drawable/pause_bt_active_trail"
-                    tools:ignore="ButtonStyle"
-                    android:onClick="onClickStop"/>
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/end_bt_active_trail"
@@ -148,8 +146,7 @@
                     android:layout_height="55dp"
                     android:layout_weight="1"
                     android:background="@drawable/end_bt_active_trail"
-                    tools:ignore="ButtonStyle"
-                    android:onClick="onClickReset"/>
+                    tools:ignore="ButtonStyle" />
             </LinearLayout>
         </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.example.trailx
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,6 +33,7 @@ class SettingsScreen : AppCompatActivity() {
     private var clickCountPassword : Int = 0
     lateinit var userFinal: User
 
+    @SuppressLint("LogNotTimber")
     private fun readUserInfo() {
         val userFirebase = Firebase.auth.currentUser
         val database = Firebase.database.reference
@@ -58,6 +60,7 @@ class SettingsScreen : AppCompatActivity() {
                 }
             }
 
+            @SuppressLint("LogNotTimber")
             override fun onCancelled(error: DatabaseError) {
                 Log.d("Hey", "We had a problem here")
             }

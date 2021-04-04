@@ -26,7 +26,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="618dp">
+            android:layout_height="523dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -107,8 +107,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="none"
                         android:fontFamily="@font/antic_slab"
+                        android:inputType="none"
                         android:textSize="20sp" />
 
                     <Button
@@ -146,8 +146,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="none"
                         android:fontFamily="@font/antic_slab"
+                        android:inputType="none"
                         android:textSize="20sp" />
 
                     <Button
@@ -185,8 +185,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="none"
                         android:fontFamily="@font/antic_slab"
+                        android:inputType="none"
                         android:textSize="20sp" />
 
                     <Button
@@ -224,8 +224,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="none"
                         android:fontFamily="@font/antic_slab"
+                        android:inputType="none"
                         android:textSize="20sp" />
 
                     <Button
@@ -263,9 +263,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="none"
                         android:fontFamily="@font/antic_slab"
-                        android:textSize="20sp"/>
+                        android:inputType="none"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/edit_weight"
@@ -302,9 +302,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="none"
                         android:fontFamily="@font/antic_slab"
-                        android:textSize="20sp"/>
+                        android:inputType="none"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/edit_password"

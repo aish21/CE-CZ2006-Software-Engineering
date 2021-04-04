@@ -5,4 +5,6 @@ object global {
     var telok = false;
     var bukit = false;
     var bedok = false;
+    var checkState = 0;
+    var sec = 0;
 }

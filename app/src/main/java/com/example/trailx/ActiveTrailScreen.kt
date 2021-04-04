@@ -3,10 +3,6 @@ package com.example.trailx
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -37,36 +33,62 @@ import kotlinx.android.synthetic.main.activity_active_trail_screen.*
 import org.json.JSONObject
 import java.util.*
 import com.android.volley.toolbox.StringRequest as StringRequest1
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.widget.Toolbar
 import android.os.Handler
-import android.view.View
+import android.os.SystemClock
+import android.widget.Button
 import android.widget.TextView
-import java.util.Locale
 
-@Suppress("DEPRECATED_IDENTITY_EQUALS")
-class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener, SensorEventListener, StepListener {
+@Suppress("DEPRECATED_IDENTITY_EQUALS", "DEPRECATION")
+class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener {
 
     private var permissionsManager: PermissionsManager = PermissionsManager(this)
     private lateinit var mapboxMap: MapboxMap
     private lateinit var mapView:MapView
     private lateinit var routeCoordinates:List<Point>
     private var weather_url1 = "https://api.weatherbit.io/v2.0/current?&city=Singapore&country=Singapore&key=c53e108c3fe945af89c27144a19863a9"
-    // var api_id1 = "c53e108c3fe945af89c27144a19863a9"
+    //var api_id1 = "c53e108c3fe945af89c27144a19863a9"
     private lateinit var weatherIcon:ImageView
-    private var textView: TextView? = null
-    private lateinit var simpleStepDetector:StepDetector
-    private lateinit var sensorManager:SensorManager
-    private lateinit var accel:Sensor
-    private var numSteps:Int = 0
-    private lateinit var step_count:TextView
-    private lateinit var calories:TextView
-    private var seconds = 0
-    // Is the stopwatch running?
-    private var running:Boolean = false
-    private var wasRunning:Boolean = false
+    internal lateinit var timer:TextView
+    private lateinit var start:Button
+    private lateinit var pause:Button
+    private lateinit var reset:Button
+    internal var MillisecondTime:Long = 0
+    internal var StartTime:Long = 0
+    internal var TimeBuff:Long = 0
+    internal var UpdateTime = 0L
+    internal lateinit var handler:Handler
+    internal var Seconds:Int = 0
+    internal var Minutes:Int = 0
+    internal var MilliSeconds:Int = 0
+    private var runnable:Runnable = object:Runnable {
+        override fun run() {
+            if(global.checkState == 0){
+                MillisecondTime = SystemClock.uptimeMillis() - StartTime
+                UpdateTime = TimeBuff + MillisecondTime
+                Seconds = (UpdateTime / 1000).toInt()
+                Minutes = Seconds / 60
+                Seconds = Seconds % 60
+                MilliSeconds = (UpdateTime % 1000).toInt()
+                timer.text = ("" + Minutes + ":"
+                        + String.format("%02d", Seconds) + ":"
+                        + String.format("%03d", MilliSeconds))
+                handler.postDelayed(this, 0)
+            } else{
+                MillisecondTime = SystemClock.uptimeMillis() - StartTime
+                UpdateTime = TimeBuff + MillisecondTime
+                Seconds = (UpdateTime / 1000).toInt()
+                Minutes = global.sec / 60
+                Seconds = global.sec % 60
+                MilliSeconds = (UpdateTime % 1000).toInt()
+                timer.text = ("" + Minutes + ":"
+                        + String.format("%02d", Seconds) + ":"
+                        + String.format("%03d", MilliSeconds))
+                handler.postDelayed(this, 0)
+            }
+        }
+    }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Mapbox access token is configured here. This needs to be called either in your application
@@ -75,163 +97,104 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
 
         setContentView(R.layout.activity_active_trail_screen)
         supportActionBar?.hide()
-        // Get an instance of the SensorManager
-        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
-        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        simpleStepDetector = StepDetector()
-        simpleStepDetector.registerListener(this)
-        step_count = findViewById<TextView>(R.id.distance_active_trail)
-        val BtnStart = findViewById<Button>(R.id.play_bt_active_trail)
-        val BtnStop = findViewById<Button>(R.id.end_bt_active_trail)
-        calories = findViewById<TextView>(R.id.calories_active_trail)
+        timer = findViewById<TextView>(R.id.timer_active_trail)
+        start = findViewById<Button>(R.id.play_bt_active_trail)
+        pause = findViewById<Button>(R.id.pause_bt_active_trail)
+        reset = findViewById<Button>(R.id.end_bt_active_trail)
+
         // This contains the MapView in XML and needs to be called after the access token is configured.
         mapView = findViewById(R.id.mapView_active_trail)
         mapView_active_trail?.onCreate(savedInstanceState)
+
         mapView.getMapAsync(this)
 
-        BtnStart.setOnClickListener {
-            numSteps = 0
-            sensorManager.registerListener(
-                this@ActiveTrailScreen,
-                accel,
-                SensorManager.SENSOR_DELAY_FASTEST
-            )
-        }
-
-        BtnStop.setOnClickListener { sensorManager.unregisterListener(this@ActiveTrailScreen) }
 
         weatherIcon = findViewById<ImageView>(R.id.weather_icon_active_trail)
         getWeather()
 
-        if (savedInstanceState != null)
-        {
-            // Get the previous state of the stopwatch
-            // if the activity has been
-            // destroyed and recreated.
-            seconds = savedInstanceState
-                .getInt("seconds")
-            running = savedInstanceState
-                .getBoolean("running")
-            wasRunning = savedInstanceState
-                .getBoolean("wasRunning")
+        handler = Handler()
+        start.setOnClickListener {
+            StartTime = SystemClock.uptimeMillis()
+            handler.postDelayed(runnable, 0)
+            reset.isEnabled = false
         }
-        runTimer()
+        pause.setOnClickListener {
+            TimeBuff += MillisecondTime
+            handler.removeCallbacks(runnable)
+            reset.isEnabled = true
+        }
+        reset.setOnClickListener {
+            MillisecondTime = 0L
+            StartTime = 0L
+            TimeBuff = 0L
+            UpdateTime = 0L
+            Seconds = 0
+            Minutes = 0
+            MilliSeconds = 0
+            timer.text = "00:00:00"
+        }
 
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_active_trail)
         back_to_home_bt_bar.setOnClickListener {
             val intent_back_to_home_bt_bar = Intent(this, HomeScreen::class.java)
+            global.checkState = 1
+            TimeBuff += MillisecondTime
+            handler.removeCallbacks(runnable)
+            reset.isEnabled = true
+            global.sec = Seconds
             startActivity(intent_back_to_home_bt_bar)
         }
         val settings_bt_bar = findViewById<Button>(R.id.settings_bt_active_trail)
         settings_bt_bar.setOnClickListener {
             val intent_settings_bt_bar = Intent(this, SettingsScreen::class.java)
+            global.checkState = 1
+            TimeBuff += MillisecondTime
+            handler.removeCallbacks(runnable)
+            reset.isEnabled = true
+            global.sec = Seconds
             startActivity(intent_settings_bt_bar)
         }
         val discover_new_trails_bt_bar =
             findViewById<Button>(R.id.discover_new_trails_bt_active_trail)
         discover_new_trails_bt_bar.setOnClickListener {
-            val intent_discover_new_trails_bt_bar =
-                Intent(this, DiscoverNewTrailsScreen::class.java)
+            val intent_discover_new_trails_bt_bar = Intent(this, DiscoverNewTrailsScreen::class.java)
+            global.checkState = 1
+            TimeBuff += MillisecondTime
+            handler.removeCallbacks(runnable)
+            reset.isEnabled = true
+            global.sec = Seconds
             startActivity(intent_discover_new_trails_bt_bar)
         }
         val active_trail_bt_bar = findViewById<Button>(R.id.active_trail_bt_active_trail)
         active_trail_bt_bar.setOnClickListener {
             val intent_active_trail_bt_bar = Intent(this, ActiveTrailScreen::class.java)
+            global.checkState = 1
+            TimeBuff += MillisecondTime
+            handler.removeCallbacks(runnable)
+            reset.isEnabled = true
+            global.sec = Seconds
             startActivity(intent_active_trail_bt_bar)
         }
         val my_trails_bt_bar = findViewById<Button>(R.id.my_trails_bt_active_trail)
         my_trails_bt_bar.setOnClickListener {
             val intent_my_trails_bt_bar = Intent(this, MyTrailsScreen::class.java)
+            global.checkState = 1
+            TimeBuff += MillisecondTime
+            handler.removeCallbacks(runnable)
+            reset.isEnabled = true
+            global.sec = Seconds
             startActivity(intent_my_trails_bt_bar)
         }
         val music_bt_bar = findViewById<Button>(R.id.music_bt_active_trail)
         music_bt_bar.setOnClickListener {
             val intent_music_bt_bar = Intent(this, MusicScreen::class.java)
+            global.checkState = 1
+            TimeBuff += MillisecondTime
+            handler.removeCallbacks(runnable)
+            reset.isEnabled = true
+            global.sec = Seconds
             startActivity(intent_music_bt_bar)
         }
-    }
-    // Start the stopwatch running when the Start button is clicked.
-    // Below method gets called when the Start button is clicked.
-    fun onClickStart(view:View) {
-        running = true
-    }
-    // Stop the stopwatch running when the Stop button is clicked.
-    // Below method gets called when the Stop button is clicked.
-    fun onClickStop(view:View) {
-        running = false
-    }
-    // Reset the stopwatch when the Reset button is clicked.
-    // Below method gets called when the Reset button is clicked.
-    fun onClickReset(view:View) {
-        running = false
-        seconds = 0
-    }
-    // Sets the Number of seconds on the timer.
-    // The runTimer() method uses a Handler to increment the seconds and update the text view.
-    private fun runTimer() {
-        // Get the text view.
-        val timeView = findViewById<TextView>(R.id.timer_active_trail)
-        // Creates a new Handler
-        val handler = Handler()
-        // Call the post() method, passing in a new Runnable.
-        // The post() method processes code without a delay,
-        // so the code in the Runnable will run almost immediately.
-        handler.post(object:Runnable {
-            public override fun run() {
-                val hours = seconds / 3600
-                val minutes = (seconds % 3600) / 60
-                val secs = seconds % 60
-                // Format the seconds into hours, minutes,
-                // and seconds.
-                val time = String
-                    .format(Locale.getDefault(),
-                        "%d:%02d:%02d", hours,
-                        minutes, secs)
-                // Set the text view text.
-                timeView.setText(time)
-                // If running is true, increment the
-                // seconds variable.
-                if (running)
-                {
-                    seconds++
-                }
-                // Post the code again
-                // with a delay of 1 second.
-                handler.postDelayed(this, 1000)
-            }
-        })
-    }
-
-    override fun onAccuracyChanged(sensor:Sensor, accuracy:Int) {}
-
-    override fun onSensorChanged(event:SensorEvent) {
-        if (event.sensor.getType() === Sensor.TYPE_ACCELEROMETER)
-        {
-            simpleStepDetector.updateAccel(
-                event.timestamp, event.values[0], event.values[1], event.values[2])
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun step(timeNs:Long) {
-        var cal = 0.0
-        val userHeight:EditText = findViewById<EditText>(R.id.user_height)
-        val userWeight:EditText = findViewById<EditText>(R.id.user_weight)
-        val userAge:EditText = findViewById<EditText>(R.id.user_age)
-        val height_s = userHeight.text.toString()
-        val weight_s = userWeight.text.toString()
-        val age_s = userAge.text.toString()
-        val height = java.lang.Float.parseFloat(height_s)
-        val weight = java.lang.Float.parseFloat(weight_s)
-        val age = java.lang.Float.parseFloat(age_s)
-        numSteps++
-        step_count.text = TEXT_NUM_STEPS + numSteps
-        val step = step_count.text.toString()
-        cal = Integer.parseInt(step).toDouble() * 0.4 * weight.toDouble() * age.toDouble() / (height * height)
-        calories.setText(cal.toInt())
-    }
-    companion object {
-        private const val TEXT_NUM_STEPS = "Number of Steps: "
     }
 
     @SuppressLint("LogNotTimber")
@@ -2257,11 +2220,6 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onResume() {
         super.onResume()
         mapView_active_trail?.onResume()
-        super.onResume()
-        if (wasRunning)
-        {
-            running = true
-        }
     }
     override fun onStart() {
         super.onStart()
@@ -2276,9 +2234,6 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onPause() {
         super.onPause()
         mapView_active_trail?.onPause()
-        super.onPause()
-        wasRunning = running
-        running = false
     }
 
     override fun onLowMemory() {
@@ -2294,8 +2249,10 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mapView_active_trail?.onSaveInstanceState(outState)
-        outState.putInt("seconds", seconds)
-        outState.putBoolean("running", running)
-        outState.putBoolean("wasRunning", wasRunning)
+    }
+
+    fun onSaveInstanceState_timer(savedInstanceState: Bundle){
+        savedInstanceState.putInt("seconds", Seconds)
+        savedInstanceState.putInt("minutes", Minutes)
     }
 }

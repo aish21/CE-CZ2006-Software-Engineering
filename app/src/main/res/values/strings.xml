@@ -10,6 +10,7 @@
     <string name="forgot_password_tb">Forgot Password</string>
     <string name="Register_view">Registration</string>
     <string name="fullname_view">Full Name: </string>
+    <string name="timer_view">Press Play!</string>
     <string name="age_view">Age: </string>
     <string name="gender_view">Gender: </string>
     <string name="male_radio_bt">Male</string>
