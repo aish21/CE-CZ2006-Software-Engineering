@@ -8,9 +8,12 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import android.net.Uri
+import android.widget.Toast
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 class EmergencySOSScreen : AppCompatActivity() {
+
+    var REQUEST_PHONE_CALL= 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +23,11 @@ class EmergencySOSScreen : AppCompatActivity() {
 
         val emergency_bt = findViewById<Button>(R.id.emergency_bt)
         emergency_bt.setOnClickListener{
-            Emergency_onClick()
+            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.CALL_PHONE),REQUEST_PHONE_CALL)
+            }else{
+                Emergency_onClick()
+            }
         }
 
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_emergency)
@@ -56,13 +63,18 @@ class EmergencySOSScreen : AppCompatActivity() {
     }
 
     fun Emergency_onClick() {
-        val number = "006594560494"
-        val intent = Intent(Intent.ACTION_CALL)
-        intent.data = Uri.parse("tel: + number")
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) !== PackageManager.PERMISSION_GRANTED)
-        { //TODO: Consider calling
+        val numberText ="94560494"
+        val intent=Intent(Intent.ACTION_CALL)
+        intent.data = Uri.parse("tel:$numberText")
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this,"Permission denied",Toast.LENGTH_LONG).show()
             return
         }
         startActivity(intent)
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == REQUEST_PHONE_CALL){
+            Emergency_onClick()
+        }
     }
 }

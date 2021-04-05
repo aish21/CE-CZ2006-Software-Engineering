@@ -86,7 +86,7 @@ class TrailByDistanceScreen : AppCompatActivity() {
         if(distance_searched.isEmpty())
             Toast.makeText(this, "Invalid Input! Try Again.", Toast.LENGTH_LONG).show()
         else {
-            if(final_distance < 1){
+            if(final_distance <= 1){
                 name_textDisplay.text = "Telok Ayer Park Trail"
                 dist_textDisplay.text = "460m"
                 Toast.makeText(this, "Trail found!", Toast.LENGTH_SHORT).show()
