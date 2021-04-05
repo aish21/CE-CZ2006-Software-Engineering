@@ -7,4 +7,5 @@ object global {
     var bedok = false;
     var checkState = 0;
     var sec = 0;
+    var initialSteps = 17000;
 }

@@ -1,15 +1,27 @@
 package com.example.trailx
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.SystemClock
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.android.volley.Request
 import com.android.volley.toolbox.Volley
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.geojson.Feature
@@ -33,13 +45,10 @@ import kotlinx.android.synthetic.main.activity_active_trail_screen.*
 import org.json.JSONObject
 import java.util.*
 import com.android.volley.toolbox.StringRequest as StringRequest1
-import android.os.Handler
-import android.os.SystemClock
-import android.widget.Button
-import android.widget.TextView
+
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS", "DEPRECATION")
-class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener {
+class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener, SensorEventListener {
 
     private var permissionsManager: PermissionsManager = PermissionsManager(this)
     private lateinit var mapboxMap: MapboxMap
@@ -52,6 +61,12 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     private lateinit var start:Button
     private lateinit var pause:Button
     private lateinit var reset:Button
+    val userFireBase = Firebase.auth.currentUser
+    val userDatabase = UserDatabase()
+    val user = userFireBase?.email?.let { userDatabase.getUserByEmail(it) }
+    val height = user?.height
+    val weight = user?.weight
+    val age = user?.age
     internal var MillisecondTime:Long = 0
     internal var StartTime:Long = 0
     internal var TimeBuff:Long = 0
@@ -60,6 +75,14 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     internal var Seconds:Int = 0
     internal var Minutes:Int = 0
     internal var MilliSeconds:Int = 0
+    private var simpleStepDetector: StepDetector? = null
+    private var sensorManager: SensorManager? = null
+    private var accel: Sensor? = null
+    private val TEXT_NUM_STEPS = "Number of Steps: "
+    private var numSteps = 0
+    private var firstCall = false
+    var step_count: TextView? = null
+    var calories: TextView? = null
     private var runnable:Runnable = object:Runnable {
         override fun run() {
             if(global.checkState == 0){
@@ -88,12 +111,38 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    fun step() {
+        var cal = 0.0
+        numSteps++
+        step_count?.text = TEXT_NUM_STEPS + numSteps
+        val step = step_count?.text.toString()
+        cal = Integer.parseInt(step).toDouble() * 0.4 * weight!!.toDouble() * age!!.toDouble() / (height!! * height.toDouble())
+        calories?.text = cal.toString()
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+    override fun onSensorChanged(event: SensorEvent) {
+        if (!firstCall) {
+            global.initialSteps = event.values[0].toInt()
+            firstCall = true
+        }
+        else {
+            step_count?.text = (event.values[0] - global.initialSteps).toString()
+            //val cal = Integer.parseInt(step_count?.text as String)* 0.4 * weight!!.toDouble() * age!!.toDouble() / (height!! * height.toDouble())
+            //calories?.text = cal.toString()
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Mapbox access token is configured here. This needs to be called either in your application
         // object or in the same activity which contains the mapview.
         Mapbox.getInstance(this, getString(R.string.access_token))
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)
+        != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACTIVITY_RECOGNITION) , 1)
+        }
 
         setContentView(R.layout.activity_active_trail_screen)
         supportActionBar?.hide()
@@ -101,6 +150,20 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         start = findViewById<Button>(R.id.play_bt_active_trail)
         pause = findViewById<Button>(R.id.pause_bt_active_trail)
         reset = findViewById<Button>(R.id.end_bt_active_trail)
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        if (stepSensor == null) {
+            Log.d("Sensors", "No Step Counter")
+        }
+        else {
+            sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
+        }
+
+        step_count = findViewById<TextView>(R.id.distance_active_trail)
+        step_count?.text = TEXT_NUM_STEPS
+        calories = findViewById<TextView>(R.id.calories_active_trail)
+        calories?.text = "0.0"
 
         // This contains the MapView in XML and needs to be called after the access token is configured.
         mapView = findViewById(R.id.mapView_active_trail)
@@ -157,7 +220,10 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         val discover_new_trails_bt_bar =
             findViewById<Button>(R.id.discover_new_trails_bt_active_trail)
         discover_new_trails_bt_bar.setOnClickListener {
-            val intent_discover_new_trails_bt_bar = Intent(this, DiscoverNewTrailsScreen::class.java)
+            val intent_discover_new_trails_bt_bar = Intent(
+                this,
+                DiscoverNewTrailsScreen::class.java
+            )
             global.checkState = 1
             TimeBuff += MillisecondTime
             handler.removeCallbacks(runnable)
@@ -236,7 +302,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
                     weatherIcon.setImageResource(R.drawable.rainy)
                 } else if (weathercode == 801 || weathercode == 802 || weathercode == 803 || weathercode == 804 || weathercode == 900) {
                     weatherIcon.setImageResource(R.drawable.cloudy)
-                } else{
+                } else {
                     weatherIcon.setImageResource(R.drawable.sunny)
                 }
             },
@@ -2220,6 +2286,14 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onResume() {
         super.onResume()
         mapView_active_trail?.onResume()
+        var stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+
+        if (stepSensor == null) {
+            Log.d("Sensors", "No Step Counter")
+        }
+        else {
+            sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
+        }
     }
     override fun onStart() {
         super.onStart()
@@ -2249,10 +2323,5 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mapView_active_trail?.onSaveInstanceState(outState)
-    }
-
-    fun onSaveInstanceState_timer(savedInstanceState: Bundle){
-        savedInstanceState.putInt("seconds", Seconds)
-        savedInstanceState.putInt("minutes", Minutes)
     }
 }
