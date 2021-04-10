@@ -1,5 +1,6 @@
 package com.example.trailx
 
+//Necessary imports
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginScreen : AppCompatActivity() {
+    //Necessary variables
     private lateinit var auth: FirebaseAuth
     private var success = false
     private lateinit var forgotpassword:TextView
@@ -21,6 +23,7 @@ class LoginScreen : AppCompatActivity() {
     private lateinit var password:EditText
     private lateinit var loginBT:Button
 
+    //Function called on Start
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
@@ -29,6 +32,7 @@ class LoginScreen : AppCompatActivity() {
         }
     }
 
+    //Function that is invoked on the creation of the Activity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -36,11 +40,13 @@ class LoginScreen : AppCompatActivity() {
         setupUIViews()
         supportActionBar?.hide()
 
+        //Login button
         val login_bt_HS = findViewById<Button>(R.id.login_bt_HS)
         login_bt_HS.setOnClickListener{
             authenticate()
         }
 
+        //Forgot password button
         val forgotPassword = findViewById<TextView>(R.id.forgot_password)
         forgotPassword.setOnClickListener {
             if (username.text.toString().isNotEmpty()) {
@@ -62,6 +68,7 @@ class LoginScreen : AppCompatActivity() {
         }
     }
 
+    //Sign in using Firebase Authentication
     private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -99,6 +106,7 @@ class LoginScreen : AppCompatActivity() {
         }
     }
 
+    //Connecting the variables to the XML tags
     fun setupUIViews() {
         forgotpassword = findViewById(R.id.forgot_password)
         username = findViewById(R.id.username_tb)
@@ -106,6 +114,7 @@ class LoginScreen : AppCompatActivity() {
         loginBT = findViewById(R.id.login_bt_HS)
     }
 
+    //Function to check if the username and email field has been left empty
     private fun validate():Boolean {
         var check = false
         val name = username.text.toString()
@@ -121,12 +130,12 @@ class LoginScreen : AppCompatActivity() {
         return check
     }
 
+    //Function to check if the correct details have been entered
     private fun logincheck() {
         //take data from database
         val name = username.text.toString()
         val pw = password.text.toString()
         signIn(name, pw)
-        //compare database username to current username and database password to current password
     }
 
     companion object {

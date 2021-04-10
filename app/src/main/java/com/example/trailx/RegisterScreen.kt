@@ -1,5 +1,6 @@
 package com.example.trailx
 
+//Necessary imports
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,11 +10,11 @@ import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register_screen.*
 
 class RegisterScreen : AppCompatActivity() {
+    //Variables necessary for a successful registration
     private lateinit var auth: FirebaseAuth
     private var success = false
     private lateinit var userFullName: EditText
@@ -41,6 +42,7 @@ class RegisterScreen : AppCompatActivity() {
     private lateinit var user: User
     private var database = UserDatabase()
 
+    //Function executed on start
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
@@ -48,7 +50,10 @@ class RegisterScreen : AppCompatActivity() {
             reload()
         }
     }
+
+    //Function executed on the creation of the Activity
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Retrieving the User information
         auth = Firebase.auth
         super.onCreate(savedInstanceState)
         FirebaseAuth.AuthStateListener{ auth ->
@@ -62,6 +67,7 @@ class RegisterScreen : AppCompatActivity() {
         setupUIViews()
         supportActionBar?.hide()
 
+        //Register button
         val reg_bt_HS = findViewById<Button>(R.id.register_bt_HS)
         reg_bt_HS.setOnClickListener {
             val fullname = userFullName.text.toString()
@@ -72,6 +78,8 @@ class RegisterScreen : AppCompatActivity() {
             val username = userUserName.text.toString()
             val password = userPassword.text.toString()
             var userGender = ""
+
+            //Validity checks
             if (validate() && checkEmail() && checkHW() && checkPCP() && checkPW() && checkUN()) {
                 val selectedId = gender.checkedRadioButtonId
                 genderradioButton = findViewById<RadioButton>(selectedId)
@@ -82,13 +90,13 @@ class RegisterScreen : AppCompatActivity() {
                 user = User(username, fullname, age.toInt(),userGender, email, height.toInt(),  weight.toInt(), password)
                 createUser(email, password)
                 database.writeNewUser(user)
-                //can copy paste from validate function to attain user input as string
                 Toast.makeText(this@RegisterScreen, "Registration Successful.", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@RegisterScreen, HomeScreen::class.java))
             }
         }
     }
 
+    //Creating User in the Firebase Authentication System
     @SuppressLint("LogNotTimber")
     private fun createUser (email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
@@ -109,10 +117,12 @@ class RegisterScreen : AppCompatActivity() {
             }
     }
 
+    //Function on reload
     private fun reload(){
 
     }
 
+    //Function to update UI
     private fun updateUI(user: FirebaseUser?) {
 
         if (user != null) {
@@ -120,6 +130,7 @@ class RegisterScreen : AppCompatActivity() {
         }
     }
 
+    //Setting up the variables to access the XML tags
     private fun setupUIViews() {
         userFullName = findViewById<EditText>(R.id.user_fullname)
         userEmail = findViewById<EditText>(R.id.user_email)
@@ -143,6 +154,8 @@ class RegisterScreen : AppCompatActivity() {
         confPassword_tv = findViewById<TextView>(R.id.conf_password_tv)
         reg_iv = findViewById<ImageView>(R.id.reg_image)
     }
+
+    //Function to check whether the fields are empty
     private fun validate():Boolean {
         var check = false
         val flag: Boolean
@@ -168,6 +181,8 @@ class RegisterScreen : AppCompatActivity() {
         }
         return check
     }
+
+    //Function to check Height and Weight
     private fun checkHW():Boolean {
         var check = false
         val height = userHeight.text.toString()
@@ -182,6 +197,8 @@ class RegisterScreen : AppCompatActivity() {
         }
         return check
     }
+
+    //Function to check email entered
     private fun checkEmail():Boolean {
         val email = userEmail.text.toString()
         var check = false
@@ -199,6 +216,7 @@ class RegisterScreen : AppCompatActivity() {
         return check
     }
 
+    //Function to check password entered
     private fun checkPW():Boolean {
         var check = false
         var number = false
@@ -239,6 +257,8 @@ class RegisterScreen : AppCompatActivity() {
         }
         return check
     }
+
+    //Function to check username entered
     private fun checkUN():Boolean {
         var check = true
         var ch:Char
@@ -263,6 +283,7 @@ class RegisterScreen : AppCompatActivity() {
         return check
     }
 
+    //Function to check whether the same password was entered in the password and confirm password field
     private fun checkPCP():Boolean {
         var check = false
         val password = userPassword.text.toString()

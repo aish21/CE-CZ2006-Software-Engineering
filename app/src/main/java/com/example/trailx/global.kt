@@ -1,5 +1,6 @@
 package com.example.trailx
 
+//Global Variables necessary for proper coordination
 object global {
     var choice = 0;
     var telok = false;

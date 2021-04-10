@@ -2,6 +2,7 @@ package com.example.trailx
 
 import com.google.firebase.database.IgnoreExtraProperties
 
+//Data class to store the user information
 @IgnoreExtraProperties
 data class User(
     var username:String = "Username",

@@ -52,7 +52,7 @@ import com.android.volley.toolbox.StringRequest as StringRequest1
 @Suppress("DEPRECATED_IDENTITY_EQUALS", "DEPRECATION")
 class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener,
     SensorEventListener {
-
+    //Necessary Variables
     private var permissionsManager: PermissionsManager = PermissionsManager(this)
     private lateinit var mapboxMap: MapboxMap
     private lateinit var mapView:MapView
@@ -75,12 +75,14 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     internal var Seconds:Int = 0
     internal var Minutes:Int = 0
     internal var MilliSeconds:Int = 0
-    //private var simpleStepDetector: StepDetector? = null
+
     private var sensorManager: SensorManager? = null
     private val TEXT_NUM_STEPS = "Number of Steps: "
     private var firstCall = false
     var step_count: TextView? = null
     var calories: TextView? = null
+
+    //Runnable for the timer execution
     private var runnable: Runnable = object : Runnable {
         override fun run() {
             if (global.checkState == 0) {
@@ -109,7 +111,10 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    //Function when the accuracy changes
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+
+    //Function that is triggered when the Sensor value is changed
     override fun onSensorChanged(event: SensorEvent) {
         if (!firstCall) {
             global.initialSteps = event.values[0].toInt()
@@ -125,6 +130,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    //Function that is invoked on the creation of the Activity
     @RequiresApi(Build.VERSION_CODES.Q)
     @SuppressLint("SetTextI18n", "LogNotTimber")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,11 +145,14 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
 
         setContentView(R.layout.activity_active_trail_screen)
         supportActionBar?.hide()
+
+        //Finding the Views of the XML tags
         timer = findViewById<TextView>(R.id.timer_active_trail)
         start = findViewById<Button>(R.id.play_bt_active_trail)
         pause = findViewById<Button>(R.id.pause_bt_active_trail)
         reset = findViewById<Button>(R.id.end_bt_active_trail)
 
+        //Manager for the sensor
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
         if (stepSensor == null) {
@@ -153,6 +162,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
         }
 
+        //Extracting the User information
         val userFirebase = Firebase.auth.currentUser
         val database = Firebase.database.reference
         val email = userFirebase?.email
@@ -179,16 +189,11 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
                 }
             }
         }
-        if (user == null) {
-            Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
-        }
-        else {
-            Toast.makeText(this, "User found", Toast.LENGTH_SHORT).show()
-        }
         height = userFinal?.height
         weight = userFinal?.weight
         age = userFinal?.age
 
+        //Displaying the Step count and Calories
         step_count = findViewById<TextView>(R.id.distance_active_trail)
         step_count?.text = TEXT_NUM_STEPS
         calories = findViewById<TextView>(R.id.calories_active_trail)
@@ -199,20 +204,27 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         mapView_active_trail?.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
 
+        //Displaying the weather information after reading the API
         weatherIcon = findViewById<ImageView>(R.id.weather_icon_active_trail)
         getWeather()
 
         handler = Handler()
+
+        //Start button
         start.setOnClickListener {
             StartTime = SystemClock.uptimeMillis()
             handler.postDelayed(runnable, 0)
             reset.isEnabled = false
         }
+
+        //Pause button
         pause.setOnClickListener {
             TimeBuff += MillisecondTime
             handler.removeCallbacks(runnable)
             reset.isEnabled = true
         }
+
+        //Reset button
         reset.setOnClickListener {
             MillisecondTime = 0L
             StartTime = 0L
@@ -224,6 +236,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             timer.text = "00:00:00"
         }
 
+        //Home button
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_active_trail)
         back_to_home_bt_bar.setOnClickListener {
             val intent_back_to_home_bt_bar = Intent(this, HomeScreen::class.java)
@@ -234,6 +247,8 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             global.sec = Seconds
             startActivity(intent_back_to_home_bt_bar)
         }
+
+        //Settings button
         val settings_bt_bar = findViewById<Button>(R.id.settings_bt_active_trail)
         settings_bt_bar.setOnClickListener {
             val intent_settings_bt_bar = Intent(this, SettingsScreen::class.java)
@@ -244,6 +259,8 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             global.sec = Seconds
             startActivity(intent_settings_bt_bar)
         }
+
+        //Discover New Trails button
         val discover_new_trails_bt_bar =
             findViewById<Button>(R.id.discover_new_trails_bt_active_trail)
         discover_new_trails_bt_bar.setOnClickListener {
@@ -258,6 +275,8 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             global.sec = Seconds
             startActivity(intent_discover_new_trails_bt_bar)
         }
+
+        //Active Trails button
         val active_trail_bt_bar = findViewById<Button>(R.id.active_trail_bt_active_trail)
         active_trail_bt_bar.setOnClickListener {
             val intent_active_trail_bt_bar = Intent(this, ActiveTrailScreen::class.java)
@@ -268,6 +287,8 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             global.sec = Seconds
             startActivity(intent_active_trail_bt_bar)
         }
+
+        //My Trails button
         val my_trails_bt_bar = findViewById<Button>(R.id.my_trails_bt_active_trail)
         my_trails_bt_bar.setOnClickListener {
             val intent_my_trails_bt_bar = Intent(this, MyTrailsScreen::class.java)
@@ -278,6 +299,8 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
             global.sec = Seconds
             startActivity(intent_my_trails_bt_bar)
         }
+
+        //Music button
         val music_bt_bar = findViewById<Button>(R.id.music_bt_active_trail)
         music_bt_bar.setOnClickListener {
             val intent_music_bt_bar = Intent(this, MusicScreen::class.java)
@@ -290,6 +313,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    //Function to read the weather data from the API
     @SuppressLint("LogNotTimber")
     fun getWeather() {
         // Instantiate the RequestQueue.
@@ -313,9 +337,6 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
                 Log.e("lat obj2", obj2.toString())
 
                 // set the temperature and the city name using getString() function
-                //Log.e("code", obj3.getString("code"))
-                //Toast.makeText(this, obj2.getString("temp"), Toast.LENGTH_LONG).show()
-                //textView.text = obj2.getString("temp") + " deg Celcius in " + obj2.getString("city_name")
 
                 val finalvalueweather = obj2.getJSONObject("weather")
                 Log.e("finalvalueweather", finalvalueweather.toString())
@@ -338,6 +359,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         queue.add(stringReq)
     }
 
+    //Function that is invoked when the Map is ready
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
         mapboxMap.setStyle(Style.OUTDOORS) {
@@ -383,6 +405,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    //Function to check the Location permissions
     @SuppressLint("MissingPermission")
     private fun enableLocationComponent(loadedMapStyle: Style) {
         // Check if permissions are enabled and if not request
@@ -421,6 +444,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    //Function that is executed to obtain the Permission Result
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
@@ -429,11 +453,13 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
+    //Function to explain why permission is required
     override fun onExplanationNeeded(permissionsToExplain: List<String>) {
         Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG)
             .show()
     }
 
+    //Function to check the permission
     override fun onPermissionResult(granted: Boolean) {
         if (granted) {
             enableLocationComponent(mapboxMap.style!!)
@@ -444,6 +470,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    //Function that is invoked when the Activity is resumed
     @SuppressLint("LogNotTimber")
     override fun onResume() {
         super.onResume()
@@ -457,26 +484,31 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         }
     }
 
+    //Function that is invoked on the start of the Activity
     override fun onStart() {
         super.onStart()
         mapView_active_trail?.onStart()
     }
 
+    //Function that is invoked at the stop of the Activity
     override fun onStop() {
         super.onStop()
         mapView_active_trail?.onStop()
     }
 
+    //Function that is invoked when the activity is paused
     override fun onPause() {
         super.onPause()
         mapView_active_trail?.onPause()
     }
 
+    //Function that is invoked on low memory
     override fun onLowMemory() {
         super.onLowMemory()
         mapView_active_trail?.onLowMemory()
     }
 
+    //Function that is invoked on the Destroy of the Activity
     override fun onDestroy() {
         super.onDestroy()
         mapView_active_trail?.onDestroy()
@@ -487,6 +519,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         mapView_active_trail?.onSaveInstanceState(outState)
     }
 
+    //Function to initialize the route coordinates of route #1
     private fun initRouteCoordinates01() {
         // Telok Ayer - ClubStreet
         routeCoordinates = ArrayList<Point>()
@@ -532,6 +565,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.8455247, 1.2815249))
     }
 
+    //Function to initialize the Route #2
     private fun initRouteCoordinates02() {
         // Bedok Reservoir loop
         routeCoordinates = ArrayList<Point>()
@@ -793,6 +827,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         (routeCoordinates as ArrayList<Point>).add(Point.fromLngLat(103.93445, 1.33955))
     }
 
+    //Function to initialize the Route #3
     private fun initRouteCoordinates03() {
         // Bukit Batok Nature Park
         routeCoordinates = ArrayList<Point>()

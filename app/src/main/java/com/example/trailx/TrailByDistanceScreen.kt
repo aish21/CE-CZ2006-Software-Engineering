@@ -1,5 +1,6 @@
 package com.example.trailx
 
+//Necessary imports
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -10,22 +11,24 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_trail_by_distance_screen.*
 
-
-
 class TrailByDistanceScreen : AppCompatActivity() {
-
+    //Necessary variables
     private lateinit var dist_value: EditText
     private lateinit var dist_textDisplay:TextView
     private lateinit var name_textDisplay:TextView
 
+    //Function that specifies what happens when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Linking the XML
         setContentView(R.layout.activity_trail_by_distance_screen)
 
+        //Finding the various Views
         dist_value = findViewById<EditText>(R.id.trail_by_dist_value_trails_by_dist)
         dist_textDisplay = findViewById<TextView>(R.id.trail_distance_trail_by_distance)
         name_textDisplay = findViewById<TextView>(R.id.name_trail_by_distance)
 
+        //Search trails button
         val search_trails_by_dist_bt = findViewById<Button>(R.id.dist_search_bt_trails_by_dist)
         search_trails_by_dist_bt.setOnClickListener{
             val distance_searched = dist_value.text.toString()
@@ -34,24 +37,30 @@ class TrailByDistanceScreen : AppCompatActivity() {
             }
         }
 
+        //Start Trail button
         val start_trail_bt_dist = findViewById<Button>(R.id.start_trail_trails_by_dist)
         start_trail_bt_dist.setOnClickListener{
             if(dist_check()){
                 startActivity(Intent(this@TrailByDistanceScreen, ActiveTrailScreen::class.java))
             }
         }
-
         supportActionBar?.hide()
+
+        //Home button
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_trails_by_dist)
         back_to_home_bt_bar.setOnClickListener{
             val intent_back_to_home_bt_bar = Intent(this, HomeScreen::class.java)
             startActivity(intent_back_to_home_bt_bar)
         }
+
+        //Settings button
         val settings_bt_bar = findViewById<Button>(R.id.settings_bt_trails_by_dist)
         settings_bt_bar.setOnClickListener{
             val intent_settings_bt_bar = Intent(this, SettingsScreen::class.java)
             startActivity(intent_settings_bt_bar)
         }
+
+        //Discover New Trails button
         val discover_new_trails_bt_bar = findViewById<Button>(R.id.discover_new_trails_bt_trails_by_dist)
         discover_new_trails_bt_bar.setOnClickListener{
             val intent_discover_new_trails_bt_bar = Intent(
@@ -60,16 +69,22 @@ class TrailByDistanceScreen : AppCompatActivity() {
             )
             startActivity(intent_discover_new_trails_bt_bar)
         }
+
+        //Active trails button
         val active_trail_bt_bar = findViewById<Button>(R.id.active_trail_bt_trails_by_dist)
         active_trail_bt_bar.setOnClickListener{
             val intent_active_trail_bt_bar = Intent(this, ActiveTrailScreen::class.java)
             startActivity(intent_active_trail_bt_bar)
         }
+
+        //My Trails button
         val my_trails_bt_bar = findViewById<Button>(R.id.my_trails_bt_trails_by_dist)
         my_trails_bt_bar.setOnClickListener{
             val intent_my_trails_bt_bar = Intent(this, MyTrailsScreen::class.java)
             startActivity(intent_my_trails_bt_bar)
         }
+
+        //Music button
         val music_bt_bar = findViewById<Button>(R.id.music_bt_trails_by_dist)
         music_bt_bar.setOnClickListener {
             val intent_music_bt_bar = Intent(this, MusicScreen::class.java)
@@ -77,6 +92,7 @@ class TrailByDistanceScreen : AppCompatActivity() {
         }
     }
 
+    //Function to check the distance entered by the user
     @SuppressLint("SetTextI18n")
     private fun dist_check():Boolean {
         var check_condition = false

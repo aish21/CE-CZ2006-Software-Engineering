@@ -2,6 +2,7 @@
 
 package com.example.trailx
 
+//Necessary imports
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -21,51 +22,64 @@ import androidx.multidex.BuildConfig
 import java.util.*
 
 class InAppMusicScreen : AppCompatActivity() {
+    //Necessary Variables for In - App Music
     private lateinit var play: ImageView
     private lateinit var prev: ImageView
     private lateinit var next: ImageView
     private var imageView: ImageView? = null
     private var songTitle: TextView? = null
-    //private var mSeekBarTime: SeekBar? = null
     private lateinit var mSeekBarVol: SeekBar
-    // private val runnable: Runnable? = null
     private var mAudioManager: AudioManager? = null
     private var currentIndex = 0
+
+    //Function that is invoked on the creation of the Activity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_in_app_music_screen)
         val bar = this.supportActionBar
         bar?.hide()
+
+        //Home button
         val back_to_home_bt_bar = findViewById<View>(R.id.back_to_home_bt_in_app_music) as Button
         back_to_home_bt_bar.setOnClickListener {
             val intent_back_to_home_bt_bar =
                 Intent(this@InAppMusicScreen as Context, HomeScreen::class.java)
             this@InAppMusicScreen.startActivity(intent_back_to_home_bt_bar)
         }
+
+        //Settings button
         val settings_bt_bar = findViewById<View>(R.id.settings_bt_in_app_music) as Button
         settings_bt_bar.setOnClickListener {
             val intent_settings_bt_bar =
                 Intent(this@InAppMusicScreen as Context, SettingsScreen::class.java)
             this@InAppMusicScreen.startActivity(intent_settings_bt_bar)
         }
+
+        //Discover New Trails button
         val discover_new_trails_bt_bar = findViewById<View>(R.id.discover_new_trails_bt_in_app_music) as Button
         discover_new_trails_bt_bar.setOnClickListener {
             val intent_discover_new_trails_bt_bar =
                 Intent(this@InAppMusicScreen as Context, DiscoverNewTrailsScreen::class.java)
             this@InAppMusicScreen.startActivity(intent_discover_new_trails_bt_bar)
         }
+
+        //Active trails button
         val active_trail_bt_bar = findViewById<View>(R.id.active_trail_bt_in_app_music) as Button
         active_trail_bt_bar.setOnClickListener {
             val intent_active_trail_bt_bar =
                 Intent(this@InAppMusicScreen as Context, ActiveTrailScreen::class.java)
             this@InAppMusicScreen.startActivity(intent_active_trail_bt_bar)
         }
+
+        //My Trails button
         val my_trails_bt_bar = findViewById<View>(R.id.my_trails_bt_in_app_music) as Button
         my_trails_bt_bar.setOnClickListener {
             val intent_my_trails_bt_bar =
                 Intent(this@InAppMusicScreen as Context, MyTrailsScreen::class.java)
             this@InAppMusicScreen.startActivity(intent_my_trails_bt_bar)
         }
+
+        //Music button
         val music_bt_bar = findViewById<View>(R.id.music_bt_in_app_music) as Button
         music_bt_bar.setOnClickListener {
             val intent_music_bt_bar =
@@ -80,7 +94,6 @@ class InAppMusicScreen : AppCompatActivity() {
         next = findViewById(R.id.next_bt_in_app_music)
         songTitle = findViewById(R.id.songTitle_in_app_music)
         imageView = findViewById(R.id.album_cover_in_app_music)
-        //mSeekBarTime = findViewById(R.id.seekBarTime_in_app_music)
         mSeekBarVol = findViewById(R.id.seekBarVol_in_app_music)
 
         // creating an ArrayList to store our songs
@@ -116,7 +129,6 @@ class InAppMusicScreen : AppCompatActivity() {
 
         //above seekbar volume
         play.setOnClickListener {
-            //with(mSeekBarTime) { this!!.max = mMediaPlayer.duration }
             if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) {
                 mMediaPlayer!!.pause()
                 play.setImageResource(R.drawable.pause_btn_player)
@@ -129,6 +141,8 @@ class InAppMusicScreen : AppCompatActivity() {
             }
             this.songNames()
         }
+
+        //Moving to the next song
         next.setOnClickListener {
             if (mMediaPlayer != null) {
                 play.setImageResource(R.drawable.pause_btn_player)
@@ -151,6 +165,8 @@ class InAppMusicScreen : AppCompatActivity() {
             mMediaPlayer.start()
             songNames()
         }
+
+        //Moving to the previous song
         prev.setOnClickListener {
             if (mMediaPlayer != null) {
                 play.setImageResource(R.drawable.pause_btn_player)
@@ -172,6 +188,7 @@ class InAppMusicScreen : AppCompatActivity() {
         }
     }
 
+    //Function to display the song names
     @Throws(NullPointerException::class)
     @SuppressLint("SetTextI18n")
     private fun songNames() {
@@ -197,20 +214,9 @@ class InAppMusicScreen : AppCompatActivity() {
         }
         // seekbar duration
         mMediaPlayer?.setOnPreparedListener {
-            //mSeekBarTime?.max = mMediaPlayer!!.duration
             mMediaPlayer!!.start()
         }
-        //mSeekBarTime?.setOnSeekBarChangeListener(object: OnSeekBarChangeListener {
-        fun onProgressChanged(seekBar:SeekBar, progress:Int, fromUser:Boolean) {
-                if (fromUser) {
-                    mMediaPlayer?.seekTo(progress)
-                    //mSeekBarTime?.progress = progress
-                }
-            }
-            fun onStartTrackingTouch(seekBar:SeekBar) {}
-            fun onStopTrackingTouch(seekBar:SeekBar) {
-            }
-        //})
+
         Thread {
             while (mMediaPlayer != null) {
                 try {

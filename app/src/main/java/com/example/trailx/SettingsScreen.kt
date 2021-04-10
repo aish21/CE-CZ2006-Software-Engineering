@@ -1,5 +1,6 @@
 package com.example.trailx
 
+//Necessary imports
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,6 +17,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class SettingsScreen : AppCompatActivity() {
+    //Variables necessary to verify validity of the information entered by the user
     private lateinit var fullname_tv: EditText
     private lateinit var age_tv: EditText
     private lateinit var gender_tv: EditText
@@ -33,6 +34,7 @@ class SettingsScreen : AppCompatActivity() {
     private var clickCountPassword : Int = 0
     lateinit var userFinal: User
 
+    //Function to read the user information from the Firebase Database
     @SuppressLint("LogNotTimber")
     private fun readUserInfo() {
         val userFirebase = Firebase.auth.currentUser
@@ -67,6 +69,7 @@ class SettingsScreen : AppCompatActivity() {
         }
         database.addValueEventListener(postListener)
 
+        //Extracting the User information
         var users: List<User>? = null
         database.child("users").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -101,6 +104,7 @@ class SettingsScreen : AppCompatActivity() {
         }
     }
 
+    //Function to verify the email entered by the user
     private fun checkEmail():Boolean {
         val email = email_tv.text.toString()
         var check = false
@@ -118,6 +122,7 @@ class SettingsScreen : AppCompatActivity() {
         return check
     }
 
+    //Linking the Views in the XML to variables previously declared
     private fun setupUIViews() {
         fullname_tv = findViewById<EditText>(R.id.full_name_edit_view)
         fullname_tv.isEnabled = false
@@ -135,6 +140,7 @@ class SettingsScreen : AppCompatActivity() {
         password_et.isEnabled = false
     }
 
+    //Function to check the password entered
     private fun checkPW():Boolean {
         var check = false
         var number = false
@@ -176,6 +182,7 @@ class SettingsScreen : AppCompatActivity() {
         return check
     }
 
+    //Function to check the Height entered
     private fun checkH():Boolean {
         var check = false
         val height = height_tv.text.toString()
@@ -189,6 +196,7 @@ class SettingsScreen : AppCompatActivity() {
         return check
     }
 
+    //Function to check the Weight entered
     private fun checkW():Boolean {
         var check = false
         val weight = weight_tv.text.toString()
@@ -203,37 +211,50 @@ class SettingsScreen : AppCompatActivity() {
         return check
     }
 
+    //Function that describes what happens when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_screen)
         setupUIViews()
         readUserInfo()
         supportActionBar?.hide()
+
+        //Home button
         val back_to_home_bt_bar = findViewById<Button>(R.id.back_to_home_bt_settings)
         back_to_home_bt_bar.setOnClickListener{
             val intent_back_to_home_bt_bar = Intent(this, HomeScreen::class.java)
             startActivity(intent_back_to_home_bt_bar)
         }
+
+        //Settings button
         val settings_bt_bar = findViewById<Button>(R.id.settings_bt_settings)
         settings_bt_bar.setOnClickListener{
             val intent_settings_bt_bar = Intent(this, SettingsScreen::class.java)
             startActivity(intent_settings_bt_bar)
         }
+
+        //Discover New Trails button
         val discover_new_trails_bt_bar = findViewById<Button>(R.id.discover_new_trails_bt_settings)
         discover_new_trails_bt_bar.setOnClickListener{
             val intent_discover_new_trails_bt_bar = Intent(this, DiscoverNewTrailsScreen::class.java)
             startActivity(intent_discover_new_trails_bt_bar)
         }
+
+        //Active Trails Button
         val active_trail_bt_bar = findViewById<Button>(R.id.active_trail_bt_settings)
         active_trail_bt_bar.setOnClickListener{
             val intent_active_trail_bt_bar = Intent(this, ActiveTrailScreen::class.java)
             startActivity(intent_active_trail_bt_bar)
         }
+
+        //My Trails button
         val my_trails_bt_bar = findViewById<Button>(R.id.my_trails_bt_settings)
         my_trails_bt_bar.setOnClickListener{
             val intent_my_trails_bt_bar = Intent(this, MyTrailsScreen::class.java)
             startActivity(intent_my_trails_bt_bar)
         }
+
+        //Music button
         val music_bt_bar = findViewById<Button>(R.id.music_bt_settings)
         music_bt_bar.setOnClickListener {
             val intent_music_bt_bar = Intent(this, MusicScreen::class.java)
