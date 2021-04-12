@@ -25,14 +25,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="523dp"
+            android:layout_height="525dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <WebView
                 android:id="@+id/webview_player_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/yt_music_bt_music"

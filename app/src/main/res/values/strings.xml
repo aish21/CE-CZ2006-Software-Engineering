@@ -33,4 +33,6 @@
     <string name="type_of_trail_view">Trail Type: </string>
     <string name="user_location_permission_explanation">This app requires you to give access to your current location to start trails.</string>
     <string name="user_location_permission_not_granted">Permission not granted!</string>
+    <string name="cal_view">Calorie Count</string>
+    <string name="steps_view">Steps</string>
 </resources>

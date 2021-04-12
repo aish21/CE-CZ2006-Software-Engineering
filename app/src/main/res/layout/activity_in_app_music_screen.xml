@@ -23,100 +23,94 @@
             android:layout_height="wrap_content"
             android:background="@drawable/music_bar" />
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="523dp">
+            android:layout_height="525dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/album_cover_in_app_music"
+                android:layout_width="330dp"
+                android:layout_height="330dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/headphones"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/songTitle_in_app_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Click Play!"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/album_cover_in_app_music"
-                    android:layout_width="330dp"
-                    android:layout_height="330dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/headphones"
+                    android:id="@+id/prev_bt_in_app_music"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_media_previous"
                     tools:ignore="ContentDescription" />
 
-                <TextView
-                    android:id="@+id/songTitle_in_app_music"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Song Title"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+                <ImageView
+                    android:id="@+id/play_bt_in_app_music"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_media_play"
+                    tools:ignore="ContentDescription" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/prev_bt_in_app_music"
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
-                        android:src="@android:drawable/ic_media_previous"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:id="@+id/play_bt_in_app_music"
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
-                        android:src="@android:drawable/ic_media_play"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:id="@+id/next_bt_in_app_music"
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
-                        android:src="@android:drawable/ic_media_next"
-                        tools:ignore="ContentDescription" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/soundmin"
-                        tools:ignore="ContentDescription" />
-
-                    <SeekBar
-                        android:id="@+id/seekBarVol_in_app_music"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp" />
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/soundmax"
-                        tools:ignore="ContentDescription" />
-
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/next_bt_in_app_music"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_media_next"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
 
-        </ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/soundmin"
+                    tools:ignore="ContentDescription" />
+
+                <SeekBar
+                    android:id="@+id/seekBarVol_in_app_music"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/soundmax"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/options_bar_in_app_music"

@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
             tools:ignore="UseCompoundDrawables">
 
@@ -121,9 +122,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/antic_slab"
+                    android:text="@string/male_radio_bt"
                     android:textAlignment="textStart"
-                    android:textSize="24sp"
-                    android:text="@string/male_radio_bt"/>
+                    android:textSize="24sp" />
 
                 <RadioButton
                     android:id="@+id/user_female_option"
@@ -163,12 +164,12 @@
                 android:id="@+id/user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints=""
                 android:ems="10"
                 android:fontFamily="@font/antic_slab"
-                android:inputType="textEmailAddress"
                 android:hint="@string/email_tb"
+                android:inputType="textEmailAddress"
                 android:textSize="24sp"
-                android:autofillHints=""
                 tools:ignore="LabelFor" />
 
             <TextView
@@ -183,7 +184,7 @@
                 android:textColorHighlight="#000000"
                 android:textColorHint="#000000"
                 android:textIsSelectable="false"
-                android:textSize="30sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -305,9 +306,9 @@
 
             <Button
                 android:id="@+id/register_bt_HS"
-                android:layout_width="match_parent"
+                android:layout_width="334dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/register_bt"/>
+                android:background="@drawable/register_bt" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

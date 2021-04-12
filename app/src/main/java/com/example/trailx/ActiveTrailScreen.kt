@@ -52,6 +52,7 @@ import com.android.volley.toolbox.StringRequest as StringRequest1
 @Suppress("DEPRECATED_IDENTITY_EQUALS", "DEPRECATION")
 class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsListener,
     SensorEventListener {
+
     //Necessary Variables
     private var permissionsManager: PermissionsManager = PermissionsManager(this)
     private lateinit var mapboxMap: MapboxMap
@@ -63,7 +64,6 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     private lateinit var start:Button
     private lateinit var pause:Button
     private lateinit var reset:Button
-    var user:User? = null
     var height: Int? = null
     var weight: Int? = null
     var age: Int? = null
@@ -79,8 +79,8 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     private var sensorManager: SensorManager? = null
     private val TEXT_NUM_STEPS = "Number of Steps: "
     private var firstCall = false
-    var step_count: TextView? = null
-    var calories: TextView? = null
+    private var step_count: TextView? = null
+    private var calories: TextView? = null
 
     //Runnable for the timer execution
     private var runnable: Runnable = object : Runnable {
@@ -179,7 +179,7 @@ class ActiveTrailScreen : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
                 users.let { users ->
                     users?.forEach { user ->
                         if (user.email == email) {
-                            Toast.makeText(this,"User found", Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(this,"User found", Toast.LENGTH_SHORT).show()
                             userFinal = user
                             age = user.age
                             height = user.height

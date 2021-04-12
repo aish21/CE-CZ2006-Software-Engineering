@@ -25,7 +25,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="523dp"
+            android:layout_height="525dp"
             android:gravity="center"
             android:orientation="vertical">
 

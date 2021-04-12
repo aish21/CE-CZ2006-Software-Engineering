@@ -44,7 +44,7 @@
 
         <Button
             android:id="@+id/active_trail_home_bt"
-            android:layout_width="381dp"
+            android:layout_width="342dp"
             android:layout_height="150dp"
             android:background="@drawable/active_trail_home_bt" />
 
@@ -54,18 +54,19 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="178dp">
+                android:layout_height="178dp"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/settings_bt_home"
-                    android:layout_width="205dp"
+                    android:layout_width="180dp"
                     android:layout_height="245dp"
                     android:background="@drawable/settings_bt_home"
                     tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/my_trails_bt_home"
-                    android:layout_width="205dp"
+                    android:layout_width="180dp"
                     android:layout_height="245dp"
                     android:background="@drawable/my_trails_bt_home"
                     tools:ignore="ButtonStyle" />
@@ -73,18 +74,19 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="140dp">
+                android:layout_height="140dp"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/discover_new_trails_bt_home"
-                    android:layout_width="205dp"
+                    android:layout_width="180dp"
                     android:layout_height="245dp"
                     android:background="@drawable/discover_new_trails_bt_home"
                     tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/emergency_sos_bt_home"
-                    android:layout_width="205dp"
+                    android:layout_width="180dp"
                     android:layout_height="245dp"
                     android:background="@drawable/emergency_sos_bt_home"
                     tools:ignore="ButtonStyle" />

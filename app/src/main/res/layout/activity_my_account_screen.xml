@@ -23,316 +23,189 @@
             android:layout_height="wrap_content"
             android:background="@drawable/my_account_bar" />
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="523dp">
+            android:layout_height="525dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/personal_profile_icon_my_account"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/personal_profile_icon_my_account"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/personal_profile"
-                        tools:ignore="ContentDescription" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <TextView
-                        android:id="@+id/full_name_tv_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/fullname_view"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/user_fullname_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autofillHints=""
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/age_tv_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/age_view"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/user_age_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:importantForAutofill="no"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-
-                    <TextView
-                        android:id="@+id/gender_tv_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/gender_view"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/user_gender_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:importantForAutofill="no"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-
-                    <TextView
-                        android:id="@+id/email_tv_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/email_view"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/user_email_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autofillHints=""
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-
-                    <TextView
-                        android:id="@+id/height_tv_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/height_view"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/user_height_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:importantForAutofill="no"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-
-                    <TextView
-                        android:id="@+id/weight_tv_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/weight_view"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/user_weight_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:importantForAutofill="no"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/my_stats_icon_my_account"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/my_stats"
-                        tools:ignore="ContentDescription" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <TextView
-                        android:id="@+id/trails_stats_tv_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/trails_completed_stats"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/trails_stats_update_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autofillHints=""
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/total_distance_stats_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/total_distance_stats"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/total_distance_stats_update_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:importantForAutofill="no"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-
-                    <TextView
-                        android:id="@+id/total_calories_stats_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/total_calories_stats"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/total_calories_stats_update_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:importantForAutofill="no"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-
-                    <TextView
-                        android:id="@+id/badges_earned_stats_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/antic_slab"
-                        android:text="@string/badges_earned_stats"
-                        android:textAlignment="textStart"
-                        android:textAllCaps="true"
-                        android:textColor="#20710B"
-                        android:textColorHighlight="#000000"
-                        android:textColorHint="#000000"
-                        android:textIsSelectable="false"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/badges_earned_stats_update_my_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autofillHints=""
-                        android:ems="10"
-                        android:fontFamily="@font/antic_slab"
-                        android:textSize="24sp"
-                        tools:ignore="LabelFor" />
-                </LinearLayout>
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/personal_profile"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
-        </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/full_name_tv_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/fullname_view"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#20710B"
+                    android:textColorHighlight="#000000"
+                    android:textColorHint="#000000"
+                    android:textIsSelectable="false"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_fullname_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:fontFamily="@font/antic_slab"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/age_tv_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/age_view"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#20710B"
+                    android:textColorHighlight="#000000"
+                    android:textColorHint="#000000"
+                    android:textIsSelectable="false"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_age_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/antic_slab"
+                    android:importantForAutofill="no"
+                    android:textSize="24sp"
+                    tools:ignore="LabelFor" />
+
+                <TextView
+                    android:id="@+id/gender_tv_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/gender_view"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#20710B"
+                    android:textColorHighlight="#000000"
+                    android:textColorHint="#000000"
+                    android:textIsSelectable="false"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_gender_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/antic_slab"
+                    android:importantForAutofill="no"
+                    android:textSize="24sp"
+                    tools:ignore="LabelFor" />
+
+                <TextView
+                    android:id="@+id/email_tv_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/email_view"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#20710B"
+                    android:textColorHighlight="#000000"
+                    android:textColorHint="#000000"
+                    android:textIsSelectable="false"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_email_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:fontFamily="@font/antic_slab"
+                    android:textSize="24sp"
+                    tools:ignore="LabelFor" />
+
+                <TextView
+                    android:id="@+id/height_tv_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/height_view"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#20710B"
+                    android:textColorHighlight="#000000"
+                    android:textColorHint="#000000"
+                    android:textIsSelectable="false"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_height_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/antic_slab"
+                    android:importantForAutofill="no"
+                    android:textSize="24sp"
+                    tools:ignore="LabelFor" />
+
+                <TextView
+                    android:id="@+id/weight_tv_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/antic_slab"
+                    android:text="@string/weight_view"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#20710B"
+                    android:textColorHighlight="#000000"
+                    android:textColorHint="#000000"
+                    android:textIsSelectable="false"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_weight_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/antic_slab"
+                    android:importantForAutofill="no"
+                    android:textSize="24sp"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/options_bar_my_account"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:background="#000000"
             android:gravity="center"
             android:orientation="horizontal">

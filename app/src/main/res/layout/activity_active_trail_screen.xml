@@ -26,7 +26,7 @@
         <FrameLayout
             android:id="@+id/map_layout_active_trail"
             android:layout_width="match_parent"
-            android:layout_height="340dp"
+            android:layout_height="345dp"
             tools:context=".examples.basics.SimpleMapViewActivity"
             tools:ignore="RedundantNamespace">
 
@@ -43,7 +43,7 @@
         <LinearLayout
             android:id="@+id/controls_layout_active_trail"
             android:layout_width="match_parent"
-            android:layout_height="183dp"
+            android:layout_height="185dp"
             android:background="#FFFFFF"
             android:orientation="vertical">
 
@@ -91,7 +91,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/antic_slab"
                     android:gravity="center"
-                    android:text="@string/fullname_view"
+                    android:text="@string/cal_view"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="#20710B"
@@ -108,7 +108,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/antic_slab"
                     android:gravity="center"
-                    android:text="@string/fullname_view"
+                    android:text="@string/steps_view"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="#20710B"

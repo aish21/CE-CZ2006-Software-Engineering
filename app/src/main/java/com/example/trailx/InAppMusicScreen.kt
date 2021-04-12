@@ -103,6 +103,26 @@ class InAppMusicScreen : AppCompatActivity() {
         songs.add(2, R.raw.sunflower)
         songs.add(3, R.raw.imready)
         songs.add(4, R.raw.homura)
+        songs.add(5, R.raw.aaomilochalen)
+        songs.add(6, R.raw.anpanman)
+        songs.add(7, R.raw.aotop1)
+        songs.add(8, R.raw.blindinglights)
+        songs.add(9, R.raw.bloodsweattears)
+        songs.add(10, R.raw.dynamite)
+        songs.add(11, R.raw.falsegod)
+        songs.add(12, R.raw.friends)
+        songs.add(13, R.raw.golden)
+        songs.add(14, R.raw.ificanthaveyou)
+        songs.add(15, R.raw.illegalweapon)
+        songs.add(16, R.raw.illstay)
+        songs.add(17, R.raw.namonamo)
+        songs.add(18, R.raw.pillowtalk)
+        songs.add(19, R.raw.shinzouwosasageyo)
+        songs.add(20, R.raw.telepathy)
+        songs.add(21, R.raw.treatyoubetter)
+        songs.add(22, R.raw.tumse)
+        songs.add(23, R.raw.wonder)
+
 
         // intializing mediaplayer
         var mMediaPlayer = MediaPlayer.create(
@@ -211,6 +231,82 @@ class InAppMusicScreen : AppCompatActivity() {
         if (currentIndex == 4) {
             songTitle!!.text = "Homura"
             imageView!!.setImageResource(R.drawable.homura)
+        }
+        if (currentIndex == 5) {
+            songTitle!!.text = "Aao Milo Chalo"
+            imageView!!.setImageResource(R.drawable.aaomilochalen)
+        }
+        if (currentIndex == 6) {
+            songTitle!!.text = "Anpanman"
+            imageView!!.setImageResource(R.drawable.anpanman)
+        }
+        if (currentIndex == 7) {
+            songTitle!!.text = "Guren No Yumiya"
+            imageView!!.setImageResource(R.drawable.aotop1)
+        }
+        if (currentIndex == 8) {
+            songTitle!!.text = "Blinding Lights"
+            imageView!!.setImageResource(R.drawable.blindinglights)
+        }
+        if (currentIndex == 9) {
+            songTitle!!.text = "Blood, Sweat and Tears"
+            imageView!!.setImageResource(R.drawable.bloodsweattears)
+        }
+        if (currentIndex == 10) {
+            songTitle!!.text = "Dynamite"
+            imageView!!.setImageResource(R.drawable.dynamite)
+        }
+        if (currentIndex == 11) {
+            songTitle!!.text = "False God"
+            imageView!!.setImageResource(R.drawable.falsegod)
+        }
+        if (currentIndex == 12) {
+            songTitle!!.text = "FRIENDS"
+            imageView!!.setImageResource(R.drawable.friends)
+        }
+        if (currentIndex == 13) {
+            songTitle!!.text = "Golden"
+            imageView!!.setImageResource(R.drawable.golden)
+        }
+        if (currentIndex == 14) {
+            songTitle!!.text = "If I can't have you"
+            imageView!!.setImageResource(R.drawable.ificanthaveyou)
+        }
+        if (currentIndex == 15) {
+            songTitle!!.text = "Illegal Weapon 2.0"
+            imageView!!.setImageResource(R.drawable.illegalweapon)
+        }
+        if (currentIndex == 16) {
+            songTitle!!.text = "I'll Stay"
+            imageView!!.setImageResource(R.drawable.illstay)
+        }
+        if (currentIndex == 17) {
+            songTitle!!.text = "Namo Namo"
+            imageView!!.setImageResource(R.drawable.namonamo)
+        }
+        if (currentIndex == 18) {
+            songTitle!!.text = "Pillowtalk"
+            imageView!!.setImageResource(R.drawable.pillowtalk)
+        }
+        if (currentIndex == 19) {
+            songTitle!!.text = "Shinzou Wo Sasageyo"
+            imageView!!.setImageResource(R.drawable.shinzouwosasageyo)
+        }
+        if (currentIndex == 20) {
+            songTitle!!.text = "Telepathy"
+            imageView!!.setImageResource(R.drawable.telepathy)
+        }
+        if (currentIndex == 21) {
+            songTitle!!.text = "Treat You Better"
+            imageView!!.setImageResource(R.drawable.treatyoubetter)
+        }
+        if (currentIndex == 22) {
+            songTitle!!.text = "Tum Se"
+            imageView!!.setImageResource(R.drawable.tumse)
+        }
+        if (currentIndex == 23) {
+            songTitle!!.text = "Wonder"
+            imageView!!.setImageResource(R.drawable.wonder)
         }
         // seekbar duration
         mMediaPlayer?.setOnPreparedListener {
