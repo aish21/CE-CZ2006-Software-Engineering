@@ -9,4 +9,5 @@ object global {
     var checkState = 0
     var sec = 0
     var initialSteps = 17000
+    var musicstate = false
 }

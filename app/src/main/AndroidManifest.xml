@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,UnusedAttribute"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:screenOrientation="sensorPortrait">
         <activity android:name=".MusicScreen" />
         <activity android:name=".InAppMusicScreen" />
         <activity android:name=".TrailByTypeScreen" />

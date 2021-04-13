@@ -314,12 +314,13 @@ class InAppMusicScreen : AppCompatActivity() {
         }
 
         Thread {
-            while (mMediaPlayer != null) {
+            while (mMediaPlayer != null && !global.musicstate) {
                 try {
                     if (mMediaPlayer!!.isPlaying) {
                         val message = Message()
                         message.what = mMediaPlayer!!.currentPosition
                         handler.sendMessage(message)
+                        global.musicstate = true
                         Thread.sleep(1000)
                     }
                 } catch (e: InterruptedException) {
