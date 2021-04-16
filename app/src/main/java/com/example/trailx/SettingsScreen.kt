@@ -292,7 +292,7 @@ class SettingsScreen : AppCompatActivity() {
                 age_tv.isEnabled = false
                 val databaseReference = Firebase.database.reference
                 userFinal.username.let { it1 ->
-                    databaseReference.child("users").child(it1).child("age").setValue(age_tv.text.toString())
+                    databaseReference.child("users").child(it1).child("age").setValue(age_tv.text.toString().toInt())
                     Log.d("User Update", "Successful")
                 }
                 clickCountAge = 0
@@ -363,7 +363,7 @@ class SettingsScreen : AppCompatActivity() {
                     val databaseReference = Firebase.database.reference
                     userFinal.username.let { it1 ->
                         databaseReference.child("users").child(it1).child("height")
-                            .setValue(height_tv.text.toString())
+                            .setValue(height_tv.text.toString().toInt())
                         Log.d("User Update", "Successful")
                     }
                     clickCountHeight = 0
@@ -385,7 +385,7 @@ class SettingsScreen : AppCompatActivity() {
                     val databaseReference = Firebase.database.reference
                     userFinal.username.let { it1 ->
                         databaseReference.child("users").child(it1).child("weight")
-                            .setValue(weight_tv.text.toString())
+                            .setValue(weight_tv.text.toString().toInt())
                         Log.d("User Update", "Successful")
                     }
                     clickCountWeight = 0

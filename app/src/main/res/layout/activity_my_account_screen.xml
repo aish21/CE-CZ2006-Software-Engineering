@@ -97,7 +97,8 @@
                     android:fontFamily="@font/antic_slab"
                     android:importantForAutofill="no"
                     android:textSize="24sp"
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor,TextViewEdits"
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/gender_tv_my_account"
@@ -172,7 +173,8 @@
                     android:fontFamily="@font/antic_slab"
                     android:importantForAutofill="no"
                     android:textSize="24sp"
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor,TextViewEdits"
+                    android:inputType="number"/>
 
                 <TextView
                     android:id="@+id/weight_tv_my_account"
@@ -197,7 +199,8 @@
                     android:fontFamily="@font/antic_slab"
                     android:importantForAutofill="no"
                     android:textSize="24sp"
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor,TextViewEdits"
+                    android:inputType="number"/>
             </LinearLayout>
 
         </LinearLayout>
