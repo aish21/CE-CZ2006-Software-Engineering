@@ -1,6 +1,8 @@
 # CE2006_SoftwareEngineering_TrailX
 Github Repo for CE2006 - Software Engineering.
 
+TrailX is a mobile application that motivates its users to lead a healthier lifestyle by enabling them to explore new walking trails in Singapore to reconnect and restore our crumbling relationship with nature. Through TrailX, users can rediscover Singapore through the plethora of trails. TrailX will be considered complete when the application has been tested and approved for release by the SEA Organization. This project supports the smart nation goal of smart urban mobility to support their vision. 
+
 Register a new user
 - The user information is stored in the Firebase Realtime database after passing the user information through an exhaustive list of validity checks to ensure that the user has entered valid information.
 
@@ -36,6 +38,8 @@ My trails - show that the 2 different trails have been recorded and displayed fo
 
 Music - show the functionality of the in app music player - play, pause, next song and volume. 
 - The user can play music in the background, with the ability to access active trail screen’s statistics. This is coded in the backend using Kotlin, where the songs have been added within the application manually during the coding phase and it serves its purpose as an offline music player.
+
+The application is built on Android Studio. Therefore, it is compatible with all operating systems that are built on the Android operating system. The application is built with a minimum API level of 22. The application requires access to the internet, location access as well as physical activity access and will be able to function seamlessly in the existence of the above.
 
 Music - show the functionality of the Youtube video player API - 
 - The API, when given access to by the user, allows TrailX to access the user’s Youtube app and enables them to customize their own playlist, as well as play songs of their own choice, as the mobile application runs in the background during a trail. 
