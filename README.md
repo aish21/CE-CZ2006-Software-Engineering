@@ -1,5 +1,5 @@
 # CE/CZ2006 - SoftwareEngineering - TrailX
-Github Repo for CE2006 - Software Engineering.
+Github Repo for CE/CZ2006 - Software Engineering.
 
 TrailX is a mobile application that motivates its users to lead a healthier lifestyle by enabling them to explore new walking trails in Singapore to reconnect and restore our crumbling relationship with nature. Through TrailX, users can rediscover Singapore through the plethora of trails. TrailX will be considered complete when the application has been tested and approved for release by the SEA Organization. This project supports the smart nation goal of smart urban mobility to support their vision. 
 
